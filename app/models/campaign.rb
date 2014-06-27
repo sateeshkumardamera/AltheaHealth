@@ -29,9 +29,7 @@ class Campaign < ActiveRecord::Base
   before_validation { facebook_image.clear if facebook_image_delete == '1' }
 
   has_attached_file :main_image,
-                    styles: { main: "512x385!", medium: "640x360!", small: "190x143!", thumb: "100x100#" },
-                    path: "public/system/:class/:id/:filename",
-                    url: "/system/:class/:id/:basename.:extension"                  
+                    styles: { main: "512x385!", medium: "640x360!", small: "190x143!", thumb: "100x100#" }                  
 
   has_attached_file :video_placeholder,
                     styles: { main: "512x385!", medium: "640x360!", thumb: "100x100#" }  #The hash indicates cropping, use ! for forced scaling
