@@ -41,17 +41,17 @@ module Crowdhoster
     config.assets.initialize_on_precompile = false
 
     #Paperclip default options
-    config.paperclip_defaults = {
-      storage: :s3,
-      s3_credentials: {
-        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-        access_key_secret: ENV['AWS_SECRET_ACCESS_KEY']
-      },
-      path: "/#{ENV['APP_NAME']}/uploads/:class/:attachment/:id_partition/:style.:extension",
-      bucket: ENV['AWS_BUCKET'],
-      s3_protocol: 'https',
-      default_url: '/images/missing_:style.jpg'
-    }
+    # config.paperclip_defaults = {
+    #   storage: :s3,
+    #   s3_credentials: {
+    #     access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    #     access_key_secret: ENV['AWS_SECRET_ACCESS_KEY']
+    #   },
+    #   path: "/#{ENV['APP_NAME']}/uploads/:class/:attachment/:id_partition/:style.:extension",
+    #   bucket: ENV['AWS_BUCKET'],
+    #   s3_protocol: 'https',
+    #   default_url: '/images/missing_:style.jpg'
+    # }
 
     #Mailgun options
     config.action_mailer.smtp_settings = {
