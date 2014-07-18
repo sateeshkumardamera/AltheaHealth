@@ -9,18 +9,17 @@ Crowdhoster.campaigns =
     $(document).ready ->
       $('.payment_radio').click (event) ->
         $('.payment_text#amount_other').attr('disabled', true);
-        $('.payment_text#amount_other').attr('value', "");
+        $('.payment_text#amount_other').val("");
 
     $(document).ready ->
       $('.payment_radio').click (event) ->
         $('.payment_text#amount_other').attr('disabled', true);
-        $('.payment_text#amount_other').attr('value', "");
+        $('.payment_text#amount_other').val("");
 
     $(document).ready ->
       $('.payment_radio_other').click (event) ->
         $('.payment_text#amount_other').attr('disabled', false);
-        $('.payment_text#amount_other').attr('value', "");
-
+        $('.payment_text#amount_other').val("");
 
 
     $("#video_image").on "click", ->
