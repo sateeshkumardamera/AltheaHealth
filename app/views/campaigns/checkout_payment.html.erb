@@ -173,11 +173,7 @@
 
           <tr>
           <td width="225">
-          <% if @campaign.payment_type == "fixed" %>
-            <p>Subtotal (<%= "#{@quantity} x #{short_price(@campaign.fixed_payment_amount, '$', 2)}" %>)</p>
-          <% else %>
             <p>Subtotal</p>
-          <% end %>
           </td>
           <td style="text-align: right"><p><%= short_price(@amount, '$', 2) %></p></td>
           </tr>
