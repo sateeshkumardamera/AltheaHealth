@@ -235,6 +235,33 @@
       font-size: 14px;
     }
   }
+  
+    .payment_label {
+        font-size: 18px;
+        display: inline!important;
+        color: #000;
+  }
+  .payment_radio {
+    margin-top: -3px!important;
+  }
+  .payment_radio_other {
+    margin-top: -3px!important;
+  }
+  .payment_text {
+    margin-top: 4px!important; 
+  }
+  .payment_div {
+    background: #cdcbcd;
+    border-radius: 4px;
+    padding: 8px;
+    width: 350px;
+    border: 1px solid black!important;
+    
+    -moz-box-shadow: inset 0px 1px 3px 0px #acacac;
+    -webkit-box-shadow: inset 0px 1px 3px 0px #acacac;
+    box-shadow: inset 0px 1px 3px 0px #acacac;
+  }
+
 }
 
 

@@ -25,15 +25,28 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def checkout_payment
+    def checkout_payment
     @reward = false
     params[:amount].sub!(',', '') if params[:amount].present?
+    params[:amount_other].sub!(',', '') if params[:amount_other].present?
+    @amount = params[:amount_other] if params[:amount_other].present?
+
     if @campaign.payment_type == "fixed"
-      if params.has_key?(:quantity)
+      if (params.has_key?(:quantity) && params[:quantity].to_i < 3)
         @quantity = params[:quantity].to_i
         @amount = ((@quantity * @campaign.fixed_payment_amount.to_f)*100).ceil/100.0
+      elsif (params.has_key?(:quantity) && params[:quantity].to_i == 3 && params.has_key?(:amount_other) && params[:amount_other].to_s.length > 0)
+        if params[:amount_other].to_i > 0
+          @amount = (params[:amount_other].to_i*100).ceil/100.0
+          if params[:amount_other].to_f < @campaign.min_payment_amount  
+            redirect_to checkout_amount_url(@campaign), flash: { warning: "Please enter higher amount!" }
+          end                
+        else
+          redirect_to checkout_amount_url(@campaign), flash: { warning: "Invalid amount!" }
+        end
+        
       else
-        redirect_to checkout_amount_url(@campaign), flash: { warning: "Invalid quantity!" }
+        redirect_to checkout_amount_url(@campaign), flash: { warning: "Please choose a valid amount!" }
         return
       end
     elsif params.has_key?(:amount) && params[:amount].to_f >= @campaign.min_payment_amount
@@ -66,6 +79,7 @@ class CampaignsController < ApplicationController
     @total = @amount + @fee
 
   end
+
 
   def checkout_process
     payment_params = basic_payment_info(params)
