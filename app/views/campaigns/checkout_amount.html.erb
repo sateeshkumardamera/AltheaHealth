@@ -22,7 +22,7 @@
               <div class="payment_div">
                 <input type="radio" name="quantity" class="payment_radio_other" id="quantity" value=3 %>
                 <label class="payment_label">Other $</label>
-                <input id="amount_other" disabled=<%= @quantity == 3? '':'disabled' %> placeholder= "Minimum <%= short_price((@campaign.fixed_payment_amount ), '$', 0) %>"  type="text" class="payment_text"  name="amount_other" value="" />
+                <input id="amount_other" disabled=<%= @quantity == 3? '':'disabled' %> placeholder= "Minimum <%= short_price((@campaign.fixed_payment_amount ), '$', 0) %>"  type="number" class="payment_text"  name="amount_other" value="" />
               </div><br>
               
             </div>
