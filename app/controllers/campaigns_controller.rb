@@ -38,7 +38,7 @@ class CampaignsController < ApplicationController
       elsif (params.has_key?(:quantity) && params[:quantity].to_i == 3 && params.has_key?(:amount_other) && params[:amount_other].to_s.length > 0)
         if params[:amount_other].to_i > 0
           @amount = (params[:amount_other].to_i*100).ceil/100.0
-          if params[:amount_other].to_f < @campaign.min_payment_amount  
+          if params[:amount_other].to_f < @campaign.fixed_payment_amount  
             redirect_to checkout_amount_url(@campaign), flash: { warning: "Please enter higher amount!" }
           end                
         else
@@ -52,7 +52,6 @@ class CampaignsController < ApplicationController
     elsif params.has_key?(:amount) && params[:amount].to_f >= @campaign.min_payment_amount
       @amount = ((params[:amount].to_f)*100).ceil/100.0
       @quantity = 1
-
       if params.has_key?(:reward) && params[:reward].to_i != 0
         begin
           @reward = Reward.find(params[:reward])
