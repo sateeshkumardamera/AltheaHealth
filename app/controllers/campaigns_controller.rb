@@ -39,7 +39,7 @@ class CampaignsController < ApplicationController
         if params[:amount_other].to_i > 0
           @amount = (params[:amount_other].to_i*100).ceil/100.0
           if params[:amount_other].to_f < @campaign.fixed_payment_amount  
-            redirect_to checkout_amount_url(@campaign), flash: { warning: "Minimum donation is $#{@campaign.fixed_payment_amount}"}
+            redirect_to checkout_amount_url(@campaign), flash: { warning: "Minimum donation is $#{@campaign.fixed_payment_amount.to_i}"}
           end                
         else
         redirect_to checkout_amount_url(@campaign), flash: { warning: "Please choose a valid amount!" }
