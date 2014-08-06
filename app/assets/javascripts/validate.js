@@ -38,13 +38,13 @@ $( document ).ready(function() {
       "settings[site_name]": "Please enter your site name",
       "settings[reply_to_email]": {
         required: "Please enter a reply to email address",
-        email: "Hmm. That doesn't look like a valid email"
+        email: "Please enter a valid email."
       },
       "settings[phone_number]": {
-        phoneUS: "Hmm. That doesn't look like a valid phone number. <br> ex: 555-555-5555"
+        phoneUS: "That doesn't look like a valid phone number. <br> ex: 555-555-5555"
       },
       "settings[header_link_url]": {
-        url: "Hmm. That doesn't look like a valid URL. ex: http://crowdtilt.com"
+        url: "That doesn't look like a valid URL. ex: http://crowdtilt.com"
       },
       "settings[tweet_text]": {
         maxlength: "Oops! Must be under 120 characters so we have room to include the link to your campaign"
@@ -252,36 +252,37 @@ $( document ).ready(function() {
       account_number: { required: true }
     },
     // validation messages
-    messages: {
+     messages: {
       full_legal_name: {
-        required: "We need your full, legal name"
+        required: "We need your full, legal name."
       },
       phone: {
-        required: "We need your phone number",
-        phoneUS: "Oops! That doesn't look valid"
+        required: "We need your phone number.",
+        phoneUS: "Please enter a valid phone number."
       },
       street_address: {
-        required: "We need your street address"
+        required: "We need your street address."
       },
       zip: {
-        required: "We need your zip code"
+        required: "We need your zip code."
       },
       birth_year: {
         required: "We need to know when you were born.",
-        number: "No letters in birth years!",
-        minlength: "Too few digits! You're not that old, are you?!",
-        maxlength: "Too many digits! Are you from the future?!"
+        number: "Please use numbers only in birth year.",
+        minlength: "Birth year looks incomplete.",
+        maxlength: "Please enter a valid birth year."
       },
       bank_routing_number: {
         required: "We need this to deposit funds<br> in your account.",
-        number: "No letters in the routing number!",
-        minlength: "US routing numbers are 9 digits",
-        usRoutingNumber: "Hmm. That routing number <br> doesn't look valid."
+        number: "No letters in the routing number.",
+        minlength: "US routing numbers are 9 digits.",
+        usRoutingNumber: "That routing number <br> doesn not look valid."
       },
       account_number: {
         required: "We need this to deposit funds<br> in your account."
       }
     }
+
 
   });
 
@@ -326,38 +327,38 @@ $( document ).ready(function() {
       },
       email: {
         required: "Please enter your email address.",
-        email: "Hmm. That doesn't look like a valid email."
+        email: "Please enter a valid email."
       },
       address_one: {
-        required: "We need your street address"
+        required: "We need your street address."
       },
       city: {
-        required: "We need your city"
+        required: "We need your city."
       },
       state: {
-        required: "We need your state"
+        required: "We need your state."
       },
       postal_code: {
-        required: "We need your postal code"
+        required: "We need your postal code."
       },
       country: {
-        required: "Please select a country"
+        required: "Please select a country."
       },
       card_number: {
-        required: "We need your card number to charge it",
-        minlength: "Hmm. That doesn't look valid just yet.",
-        creditcard: "Hmm. That doesn't look valid just yet."
+        required: "We need your card number for the donation.",
+        minlength: "Credit card number looks incomplete.",
+        creditcard: "Credit Card number is invalid. Please confirm the number."
       },
       security_code: {
-        required: "Your security code is required. Fill 'er in!",
-        number: "Numbers only for the security code!",
-        minlength: "Security codes are at least 3 digits!",
-        maxlength: "Security codes are 4 digits or less!"
+        required: "Your security code is required.",
+        number: "Numbers only for the security code.",
+        minlength: "Security codes are at least 3 digits.",
+        maxlength: "Security codes are 4 digits or less."
       },
       billing_postal_code: {
-        required: "We need your billing postal code",
-        minlength: "That doesn't look like a valid postal code",
-        maxlength: "That doesn't look like a valid postal code"
+        required: "We need your billing postal code.",
+        minlength: "Postal code looks incomplete.",
+        maxlength: "Please enter a valid postal code."
       }
     }
 
