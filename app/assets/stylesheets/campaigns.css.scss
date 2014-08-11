@@ -248,8 +248,18 @@
     margin-top: -3px!important;
   }
   .payment_text {
-    margin-top: 4px!important; 
+    margin-top: 4px!important;    
   }
+  form input[type='number']::-webkit-outer-spin-button,
+  form input[type='number']::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+  }
+  input[type=number] {
+    -moz-appearance:textfield;
+  }
+
+  
   .payment_div {
     background: #cdcbcd;
     border-radius: 4px;
