@@ -363,5 +363,40 @@ $( document ).ready(function() {
     }
 
   });
+  
+    // validate '{campaign_name}/checkout/amount'
+  $("#amount_form").validate({
+
+  // custom handler to call named function "do_payment"
+    submitHandler: function(form) {
+      Crowdhoster.campaigns.submitAmountForm(form);
+    },
+        // validate the previously selected element when the user clicks out
+    onfocusout: function(element) {
+      $(element).valid();
+    },
+
+    // hide the loader when form is not valid
+    // add back in name attributes when form is not valid
+    invalidHandler: function(event, validator) {
+      $(".loader").hide();
+      $('#amount_other').attr('name', 'amount_other');
+    },
+
+    // validation rules
+    rules: {
+      amount_other: { required: true, number: true,  min: 1, max: 99999999 }
+    },
+    // validation messages
+    messages: {
+      amount_other: {
+        required: "Please enter amount.",
+        number: "Please enter only numbers in this field.",
+        min: "Please enter a valid amount between 1 and 99,999,999.",
+        max: "Please enter a valid amount between 1 and 99,999,999."
+      }
+    }
+
+  });
 
 });

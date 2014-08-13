@@ -13,8 +13,8 @@ Crowdhoster.campaigns =
 
     $(document).ready ->
       $('.payment_radio').click (event) ->
-        $('.payment_text#amount_other').attr('disabled', true);
-        $('.payment_text#amount_other').val("");
+        $('#amount_other').attr('disabled', true);
+        $('#amount_other').val("");
 
     $(document).ready ->
       $('.payment_radio_other').click (event) ->
@@ -63,8 +63,7 @@ Crowdhoster.campaigns =
       $('#amount').removeClass('error')
       $('.error').hide()
     
-    $('#amount_form').on "submit", (e) ->
-      e.preventDefault()
+    submitAmountForm: (form) ->
       $reward = $('.reward_option.selected')
       $amount = $('#amount')
       if($reward && $amount.val().length == 0)
