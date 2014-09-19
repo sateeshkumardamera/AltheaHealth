@@ -1,9 +1,11 @@
 #checkout {
-  width: 100%;
-  padding: 50px 0;
 
+  .confirmation_main_content{
+    width: 60%;
+    float: left;
+  }
   .main_content {
-    width: 560px;
+    width: 60%;
     float: left;
     h3 {
       margin: 0px 0px 30px;
@@ -18,6 +20,8 @@
     }
 
     .checkout_block {
+      width: 89%;
+      min-width: 240px;
       background-color: #ffffff;
       padding: 30px;
       margin-bottom: 0px;
@@ -136,11 +140,12 @@
     }
 
     fieldset {
+      width: 98%;
       display: inline-block;
     }
 
     #fullname, #email, #address_one, #address_two, #additional_info{
-      width: 480px;
+      width: 96%;
     }
 
     .billing_address {
@@ -180,7 +185,7 @@
 
   .sidebar {
     float: right;
-    width: 345px;
+    width: 36%;
 
     .crowdtilt-powered {
       margin-bottom: 34px;
@@ -224,13 +229,17 @@
 
   .share {
     margin-top: 30px;
+    width: 100%;
+    min-width: 240px;
   }
 
   .confirmation_sidebar {
     float: left;
     background: white;
-    margin-left: 20px;
-    width: 315px;
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 33%;
+    min-width: 240px;
     p {
       font-size: 14px;
     }
@@ -259,19 +268,70 @@
     -moz-appearance:textfield;
   }
 
+  .payment_id_label{
+    word-wrap: break-word;
+  }
   
   .payment_div {
+    width: 62%;
+    min-width: 230px;
     background: #cdcbcd;
     border-radius: 4px;
     padding: 8px;
-    width: 350px;
     border: 1px solid black!important;
     
     -moz-box-shadow: inset 0px 1px 3px 0px #acacac;
     -webkit-box-shadow: inset 0px 1px 3px 0px #acacac;
     box-shadow: inset 0px 1px 3px 0px #acacac;
   }
-
+  
 }
 
 
+/****************************/
+/* Mobile phones and Smart phones */ 
+@media only screen and (min-width: 320px) and (max-width: 800px)
+{
+  .sidebar {
+    display: none;
+  }
+.confirmation_main_content {
+    margin-bottom: 5% !important;
+    margin-left: 15px;
+    width: 100% !important;
+  }
+  .confirmation_sidebar {
+    float: left;
+    background: white;
+    width: 80% !important;
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+  /****************************/
+/* Tablets portrait orientation */ 
+
+@media only screen and (min-width: 799px) and (max-width: 1142px)
+{
+  .sidebar {
+    margin-top: 10px !important;
+  }
+  .confirmation_main_content {
+    margin-bottom: 5% !important;
+    margin-left: 15px;
+    width: 100% !important;
+  }
+  .confirmation_sidebar {
+    float: left;
+    background: white;
+    width: 80%!important;
+    min-width: 240px;
+    p {
+      font-size: 14px;
+    }
+  }
+
+
+}

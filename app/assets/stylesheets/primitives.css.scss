@@ -15,19 +15,28 @@ $secondary_font: "Helvetica";
 $tertiary_font:  "Arial";
 
 #main {
+  width: 100%;
   min-height: 400px;
 }
 
 .content_box {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-left: 35px;
-  padding-right: 130px;
+  width: 75%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  padding-left: 3%;
+  padding-right: 3%;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 4%;
+  margin-top: 4%;
   background: #f6f6f6;
+}
+.privacy_div {
+  width: 100%;
+}
+.personal_details_div {
+  width: 100%;
 }
 
 h1 {

@@ -1,6 +1,6 @@
 <div id="checkout">
   <div class="container content_box clearfix">
-    <div class="main_content">
+    <div class="confirmation_main_content">
       <%= raw(@campaign.confirmation_page_content) %>
       <div class="share clearfix">
         <%= render 'shared/share_buttons', campaign: @campaign, settings: @settings %>
@@ -36,7 +36,7 @@
         <%= @payment.additional_info %>
         <br/><br/>
       <% end %>
-      <strong>Payment ID:</strong><br/> <%= @payment.ct_payment_id %><br/><br/>
+      <strong>Payment ID:</strong><br/> <label class="payment_id_label"> <%= @payment.ct_payment_id %></label><br/><br/>
       <strong>Charge will appear on your statement as:</strong><br/> <%= 'BAL*' + @settings.billing_statement_text %><br/><br/>
       <p class="center">An email confirmation was sent to <%= @payment.email %></p>
       </p>
