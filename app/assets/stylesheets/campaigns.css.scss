@@ -6,6 +6,7 @@
   }
   .main_content {
     width: 60%;
+    min-width: 270px;
     float: left;
     h3 {
       margin: 0px 0px 30px;
@@ -21,7 +22,6 @@
 
     .checkout_block {
       width: 89%;
-      min-width: 240px;
       background-color: #ffffff;
       padding: 30px;
       margin-bottom: 0px;
@@ -296,9 +296,10 @@
     display: none;
   }
 .confirmation_main_content {
-    margin-bottom: 5% !important;
+    /*margin-bottom: 5% !important;
     margin-left: 15px;
-    width: 100% !important;
+    width: 100% !important;*/
+    display: none;
   }
   .confirmation_sidebar {
     float: left;
@@ -319,9 +320,10 @@
     margin-top: 10px !important;
   }
   .confirmation_main_content {
-    margin-bottom: 5% !important;
+    /*margin-bottom: 5% !important;
     margin-left: 15px;
-    width: 100% !important;
+    width: 100% !important;*/
+    display: none;
   }
   .confirmation_sidebar {
     float: left;
