@@ -290,7 +290,7 @@
 
 /****************************/
 /* Mobile phones and Smart phones */ 
-@media only screen and (min-width: 320px) and (max-width: 800px)
+@media only screen and (min-device-width: 320px) and (max-device-width: 800px)
 {
   .sidebar {
     display: none;
@@ -314,7 +314,7 @@
   /****************************/
 /* Tablets portrait orientation */ 
 
-@media only screen and (min-width: 799px) and (max-width: 1142px)
+@media only screen and (min-device-width: 799px) and (max-device-width: 1142px)
 {
   .sidebar {
     margin-top: 10px !important;
