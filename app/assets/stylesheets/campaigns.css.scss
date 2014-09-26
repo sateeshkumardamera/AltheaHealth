@@ -1,9 +1,8 @@
+#debug{
+  display: none !important;
+}
 #checkout {
-
-  .confirmation_main_content{
-    width: 60%;
-    float: left;
-  }
+  
   .main_content {
     width: 60%;
     min-width: 270px;
@@ -233,13 +232,15 @@
     min-width: 240px;
   }
 
+  .confirmation_main_content{
+    width: 60%;
+    float: left;
+  }
   .confirmation_sidebar {
     float: left;
     background: white;
-    margin-left: 10px;
-    margin-top: 5px;
     width: 33%;
-    min-width: 240px;
+    min-width: 200px;
     p {
       font-size: 14px;
     }
@@ -257,7 +258,8 @@
     margin-top: -3px!important;
   }
   .payment_text {
-    margin-top: 4px!important;    
+    margin-top: 4px!important;
+    width: 68%;
   }
   form input[type='number']::-webkit-outer-spin-button,
   form input[type='number']::-webkit-inner-spin-button {
@@ -274,7 +276,7 @@
   
   .payment_div {
     width: 62%;
-    min-width: 230px;
+    min-width: 205px;
     background: #cdcbcd;
     border-radius: 4px;
     padding: 8px;
@@ -290,10 +292,29 @@
 
 /****************************/
 /* Mobile phones and Smart phones */ 
-@media only screen and (min-device-width: 320px) and (max-device-width: 800px)
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
 {
+  #card_number{
+    width: 100% !important;
+    min-width: 190px !important
+  }
+  #security_code{
+    width: 100% !important;
+    min-width: 190px !important;
+  }
+  #billing_postal_code{
+    width: 100% !important;
+    min-width: 190px !important;
+  }
+  #powered{
+    font-size: 10px;
+  }
+  .checkout_block {
+      width: 82% !important;
+      padding: 10px !important;
+  }
   .sidebar {
-    display: none;
+    display: none !important;
   }
 .confirmation_main_content {
     /*margin-bottom: 5% !important;
@@ -301,20 +322,17 @@
     width: 100% !important;*/
     display: none;
   }
-  .confirmation_sidebar {
-    float: left;
-    background: white;
-    width: 80% !important;
-    p {
-      font-size: 14px;
-    }
+}
+@media only screen and (min-device-width: 481px) and (max-device-width: 799px)
+{
+  .sidebar {
+    display: none !important;
   }
 }
-
   /****************************/
 /* Tablets portrait orientation */ 
 
-@media only screen and (min-device-width: 799px) and (max-device-width: 1142px)
+@media only screen and (min-device-width: 800px) and (max-device-width: 1142px)
 {
   .sidebar {
     margin-top: 10px !important;
@@ -325,15 +343,5 @@
     width: 100% !important;*/
     display: none;
   }
-  .confirmation_sidebar {
-    float: left;
-    background: white;
-    width: 80%!important;
-    min-width: 240px;
-    p {
-      font-size: 14px;
-    }
-  }
-
-
+ 
 }

@@ -23,10 +23,7 @@ $tertiary_font:  "Arial";
 }
 .content_box {
   width: 75%;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  padding-left: 3%;
-  padding-right: 3%;
+  padding: 3%;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
@@ -168,5 +165,12 @@ select.error {
     &:hover {
       color: gray;
     }
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+{
+  .content_box {
+    padding: 7% !important;
   }
 }
