@@ -3,13 +3,15 @@
   <div class="container content_box clearfix">
     <div class="confirmation_main_content">
       <%= raw(@campaign.confirmation_page_content) %>
-      <div class="share clearfix">
+      <h3><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h3>
+      <h4>THANK YOU</h4>
+      <!-- <div class="share clearfix">
         <%= render 'shared/share_buttons', campaign: @campaign, settings: @settings %>
       </div>
-      <p style="margin-top: 50px;">Return to <a href="<%= url_for campaign_home_path(@campaign, :sr=>params[:sr]) %>"><%= @campaign.name %> homepage</a></p>
+      <p style="margin-top: 50px;">Return to <a href="<%= url_for campaign_home_path(@campaign, :sr=>params[:sr]) %>"><%= @campaign.name %> homepage</a></p> -->
     </div>
     <div class="well confirmation_sidebar" id="completed_purchase">
-      <h4>Payment Summary</h4>
+      <h4>Donation Summary</h4>
       <% if !@campaign.production_flag %>
         <div style="color: red; margin-bottom: 10px;">This campaign is in sandbox mode, your card will not actually be charged.</div>
       <% end%>
@@ -41,6 +43,15 @@
       <strong>Charge will appear on your statement as:</strong><br/> <%= 'BAL*' + @settings.billing_statement_text %><br/><br/>
       <p class="center">An email confirmation was sent to <%= @payment.email %></p>
       </p>
+    </div>
+    
+    <div class="cl_share">
+      <div><label style="text-align: center; font-size: 16px; color: #6b6b6b">Help us spread the word</label></div>
+      <div class="share_content">
+      <div class="share_fb"><a href="/"><%= image_tag "fb.png", alt: "facebook" %></a></div>
+      <div class="share_twitter"><a href="/"><%= image_tag "twitter.png", alt: "twitter" %></a></div>
+      <div class="share_lin"><a href="/"><%= image_tag "lin.png", alt: "linkedin" %></a></div>
+      </div>
     </div>
   </div>
 </div>
