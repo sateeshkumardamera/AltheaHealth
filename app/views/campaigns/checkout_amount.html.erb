@@ -10,7 +10,7 @@
           <% if @campaign.payment_type == 'fixed' %>
 
             <div class="quantity_input">
-              <h4 class="amount_header"><strong> Select Donation Level </strong></h4><br>
+              <h4 class="amount_header"><strong> Select Donation Level: <i class="icon icon-lock" data-placement="top"></i> </strong></h4><br>
               
               <div class="payment_div">
                 <input type="radio" name="quantity" class="payment_radio" id="quantity" value=1 %>
@@ -82,7 +82,7 @@
           <% end %>
 
 
-          <button type="submit" class="btn btn-primary" id="continue_to_checkout">Donate</button>
+          <p class="submit_align" ><button type="submit" class="btn" id="continue_to_checkout">    Donate    </button></p>
 
         </form>
       </div>

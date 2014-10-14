@@ -80,5 +80,5 @@
 <div><%= link_to "Sign Out", destroy_user_session_path, method: "delete" %></div>
 <% end %>
 <% if !user_signed_in?%>
- <div style="font-size: 18px"><%= link_to_function "Back", "history.back()" %></div>
+ <div style="font-size: 18px;"><%= link_to_function "Back", "history.back()", :class => "link", :style => "color: #ff7000 !important; padding: 5px"  %></div>
 <% end %>

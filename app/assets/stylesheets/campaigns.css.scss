@@ -33,6 +33,7 @@
 
     h4.amount_header {
       margin-top: 0px;
+      font-size: 17px;
     }
 
     .quantity_input {
@@ -125,6 +126,8 @@
 
     .btn {
       margin-top: 20px;
+      background: #ff7000;
+      color: white;
     }
 
     h4 {
@@ -276,7 +279,7 @@
   }
 
   .confirmation_main_content{
-    width: 60%;
+    width: 100%;
     
     h3 {
       margin: 0px 0px 30px;
@@ -303,6 +306,7 @@
   
     .payment_label {
         font-size: 18px;
+        font-weight: bold;
         display: inline!important;
         color: #000;
   }
@@ -315,6 +319,7 @@
   .payment_text {
     margin-top: 4px!important;
     width: 68%;
+    min-width: 30%;
   }
   form input[type='number']::-webkit-outer-spin-button,
   form input[type='number']::-webkit-inner-spin-button {
@@ -334,8 +339,8 @@
     min-width: 205px;
     background: #cdcbcd;
     border-radius: 4px;
-    padding: 8px;
-    border: 1px solid black!important;
+    padding: 10px;
+    /*border: 1px solid black!important;*/
     
     -moz-box-shadow: inset 0px 1px 3px 0px #acacac;
     -webkit-box-shadow: inset 0px 1px 3px 0px #acacac;
@@ -378,6 +383,15 @@
       padding: 2%;
     }
   }
+  .anchorColor{
+    color: black;
+  }
+  .anchorColor:hover{
+    color: #ff7000;
+  }
+  .backAnchorColor{
+    color: #ff7000;
+  }
   
 }
 
@@ -413,7 +427,7 @@
     width: 100% !important;
     margin-top: 0% !important;
   }
-.confirmation_main_content {
+  .confirmation_main_content {
     /*margin-bottom: 5% !important;
     margin-left: 15px;
     width: 100% !important;
@@ -421,6 +435,18 @@
   }
   .cl_share{
     margin-left: 0% !important;
+  }
+  .custom_content {
+    padding: 0px !important;
+  }
+  .main_content{
+   
+    .submit_align {
+      text-align: center;
+    }
+    .btn{
+      margin-top: 0px !important;
+    }
   }
 }
 @media only screen and (min-device-width: 481px) and (max-device-width: 799px)

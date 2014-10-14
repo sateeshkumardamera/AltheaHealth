@@ -140,7 +140,7 @@
           <% end%>
 
           <div class="payment-submit javascript-only">
-            <button class="btn btn-primary show_loader" type="submit" data-total="<%= number_with_precision(@total, precision: 2) %>" data-loader="payment_form">
+            <button class="btn show_loader" type="submit" data-total="<%= number_with_precision(@total, precision: 2) %>" data-loader="payment_form">
               Confirm payment of $<%= number_with_precision(@total, :delimiter => ",", precision: 2) %>
             </button>
             <span class="loader" data-loader="payment_form" style="display:none"></span>
