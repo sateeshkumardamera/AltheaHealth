@@ -1,6 +1,6 @@
 class AdminMailer < ActionMailer::Base
   layout 'default_mailer'
-  default from: "payments@crowdhoster.com"
+  default from: "me@sandbox2aa0585151424332bfa819edb0dc9b13.mailgun.org"
 
   helper :campaigns
 
