@@ -48,7 +48,7 @@ Crowdhoster::Application.configure do
     :port => 587,
     :domain => "#{ENV['MAILGUN_DOMAIN']}",
     :user_name => "#{ENV['MAILGUN_USERNAME']}",
-    :password => "#{ENV['MAILGUN_API_KEY']}"
+    :password => "#{ENV['MAILGUN_PASSWORD']}"
   }
 
 end
