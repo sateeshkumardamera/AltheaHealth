@@ -6,7 +6,6 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'unicorn'
 gem 'foreman'
-gem 'sqlite3'
 
 gem 'crowdtilt', github: 'Crowdtilt/crowdtilt-gem'
 gem 'devise', '~> 3.2.0'
