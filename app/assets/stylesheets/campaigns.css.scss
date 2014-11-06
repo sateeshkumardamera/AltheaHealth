@@ -8,8 +8,9 @@
     min-width: 270px;
     float: left;
     h3 {
-      margin: 0px 0px 30px;
-      color: #4b4b4b;
+      //margin: 0px 0px 30px;
+      margin: 20px 0px 15px;
+      color: #ffffff;
       a {
         color: #4b4b4b;
         text-decoration: none;
@@ -20,9 +21,9 @@
     }
 
     .checkout_block {
-      width: 89%;
+      //width: 89%;
       background-color: #ffffff;
-      padding: 30px;
+      //padding: 30px;
       margin-bottom: 0px;
     }
 
@@ -125,7 +126,8 @@
     }
 
     .btn {
-      margin-top: 20px;
+      //margin-top: 20px;
+      margin-top: 10px;
       background: #ff7000;
       color: white;
     }
@@ -184,11 +186,36 @@
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     }
   }
-  .checkout_sidebar{
-    float: right;
-    width: 36%;
+  .checkout_bottombar{
+    display: none;
+    float: left;
     margin-top: 5%;
+    margin-right: 12%;
+    width: 100%;
+    background-color: rgba(211, 211, 211, 0.35);
+  }
+  .checkout_sidebar{
+    margin-right: 12%;
+    right: 0;
+    width: 30%;
+    height: 450px;
+    //margin-top: 5%;
+    position: absolute;
+    background-color: rgba(211, 211, 211, 0.35);
 
+  ul {
+    padding :10px;
+    margin:10px;
+  }
+
+  li{
+    margin-top: 10px;
+  }
+
+  li:first-child {
+    margin-top:0;
+  }
+    
     .crowdtilt-powered {
       margin-bottom: 34px;
       img {
@@ -233,14 +260,15 @@
     width: 36%;
 
     .crowdtilt-powered {
-      margin-bottom: 34px;
+      margin-bottom: 22px;
+      margin-top: 15px;
       img {
         float: right;
       }
     }
 
     .well {
-      background: white;
+      background: rgb(244, 237, 208);
       h4 {
         margin-top: 0px;
       }
@@ -282,7 +310,8 @@
     width: 100%;
     
     h3 {
-      margin: 0px 0px 30px;
+      //margin: 0px 0px 30px;
+      margin-bottom: 0px;
       color: #4b4b4b;
       a {
         color: #4b4b4b;
@@ -296,9 +325,11 @@
   .confirmation_sidebar {
     float: left;
     margin-top: 20px;
-    background: white;
+    background: #f4edd0;
     width: 50%;
     min-width: 200px;
+    padding: 2%;
+    border-radius: 7px;
     p {
       font-size: 14px;
     }
@@ -312,14 +343,32 @@
   }
   .payment_radio {
     margin-top: -3px!important;
+    width: 7%;
+    height: 3em;
   }
   .payment_radio_other {
     margin-top: -3px!important;
+    width: 7%;
+    height: 2em;
+  }
+  .paymentconfirm_text{
+    width: 96%;
+    height: 35px;
+    font-size: 18px;
+    border-radius: 7px;
+    background-color: rgba(128, 128, 128, 0.11);
+    -moz-box-shadow: inset 0px 1px 3px 0px #acacac;
+    -webkit-box-shadow: inset 0px 1px 3px 0px #acacac;
+    box-shadow: inset 0px 0px 0px 0px #acacac;
   }
   .payment_text {
-    margin-top: 4px!important;
     width: 68%;
-    min-width: 30%;
+    min-width: 20%;
+    height: 25px;
+    border-radius: 7px;
+    -moz-box-shadow: inset 0px 1px 3px 0px #acacac;
+    -webkit-box-shadow: inset 0px 1px 3px 0px #acacac;
+    box-shadow: inset 0px 0px 0px 0px #acacac;
   }
   form input[type='number']::-webkit-outer-spin-button,
   form input[type='number']::-webkit-inner-spin-button {
@@ -333,10 +382,16 @@
   .payment_id_label{
     word-wrap: break-word;
   }
-  
-  .payment_div {
-    width: 62%;
+  .donation_heading {
+    width: 70%;
     min-width: 205px;
+    padding: 10px;
+    height: 20px;
+  }
+  .payment_div {
+    width: 70%;
+    min-width: 205px;
+    height: 36px;
     background: #cdcbcd;
     border-radius: 4px;
     padding: 10px;
@@ -349,19 +404,18 @@
   
   .cl_share{
     float: left;
-    padding: 5%;
+    //padding: 5%;
     margin-left: 3%;
     margin-top: 20px;
     width: 30%;
     min-width: 215px;
     
-    background: white;
-    border-radius: 2px;
-    border: 1px light gray!important;
+   // background: white;
+   // border-radius: 2px;
     
-    -moz-box-shadow: inset 0px 1px 1px 0px #acacac;
-    -webkit-box-shadow: inset 0px 1px 1px 0px #acacac;
-    box-shadow: inset 0px 1px 1px 0px #acacac;
+   // -moz-box-shadow: inset 0px 1px 1px 0px #acacac;
+   // -webkit-box-shadow: inset 0px 1px 1px 0px #acacac;
+   // box-shadow: inset 0px 1px 1px 0px #acacac;
     
     .share_content{
       padding-left: 15%;
@@ -383,10 +437,10 @@
       padding: 2%;
     }
   }
-  .anchorColor{
+  a{
     color: black;
   }
-  .anchorColor:hover{
+  a:hover{
     color: #ff7000;
   }
   .backAnchorColor{
@@ -422,7 +476,11 @@
   .sidebar {
     display: none !important;
   }
+  .checkout_bottombar{
+    display: block !important;
+  }
   .checkout_sidebar{
+    display: none;
     float: left !important;
     width: 100% !important;
     margin-top: 0% !important;
@@ -432,6 +490,14 @@
     margin-left: 15px;
     width: 100% !important;
     display: none;*/
+  }
+  .confirmation_sidebar{
+    padding: 5% !important;
+    width: 95% !important;
+  }
+  .payment_text {
+    width: 50% !important;
+    min-width: 20%;
   }
   .cl_share{
     margin-left: 0% !important;
@@ -451,6 +517,10 @@
 }
 @media only screen and (min-device-width: 481px) and (max-device-width: 799px)
 {
+  .payment_text {
+    width: 50% !important;
+    min-width: 20%;
+  }
   .sidebar {
     display: none !important;
   }
@@ -467,6 +537,10 @@
 
 @media only screen and (min-device-width: 800px) and (max-device-width: 1142px)
 {
+  .payment_text {
+    width: 50% !important;
+    min-width: 20%;
+  }
   .sidebar {
     margin-top: 10px !important;
   }

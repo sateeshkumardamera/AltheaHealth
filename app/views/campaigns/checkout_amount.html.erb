@@ -4,21 +4,22 @@
     <div class="main_content">
       <h3><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h3>
 
-      <div class="well checkout_block">
+      <div class="checkout_block">
         <form accept-charset="UTF-8" action="<%= checkout_payment_path(@campaign, :sr => params[:sr]) %>" method="GET" id="amount_form">
 
           <% if @campaign.payment_type == 'fixed' %>
 
             <div class="quantity_input">
-              <h4 class="amount_header"><strong> Select Donation Level: <i class="icon icon-lock" data-placement="top"></i> </strong></h4><br>
-              
+              <div class="donation_heading">
+                <h4 class="amount_header"><strong> Select Donation Level: <div style="float: right"><i class="icon icon-lock" data-placement="top"></i></div> </strong></h4><br>
+              </div>
               <div class="payment_div">
                 <input type="radio" name="quantity" class="payment_radio" id="quantity" value=1 %>
-                <label class="payment_label"><%= short_price((@campaign.fixed_payment_amount ), '$', 0) %></label>
+                <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount ), '$', 0) %></label>
               </div><br>
               <div class="payment_div">
                 <input type="radio" name="quantity" class="payment_radio" id="quantity" value=2 %>
-                <label class="payment_label"><%= short_price((@campaign.fixed_payment_amount * 2 ), '$', 0) %></label>
+                <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount * 2 ), '$', 0) %></label>
               </div><br>
               <div class="payment_div">
                 <input type="radio" name="quantity" class="payment_radio_other" id="quantity" value=3 %>
@@ -90,6 +91,11 @@
     </div>
 
     <div class="checkout_sidebar">
+      <div class="custom_content">
+        <%= raw(@campaign.checkout_sidebar_content) %>
+      </div>
+    </div>
+    <div class="checkout_bottombar">
       <div class="custom_content">
         <%= raw(@campaign.checkout_sidebar_content) %>
       </div>

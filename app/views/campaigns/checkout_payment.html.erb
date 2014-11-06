@@ -4,20 +4,17 @@
     <div class="main_content">
       <h3><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h3>
 
-    <div class="well checkout_block" style="padding-bottom: 16px">
+    <div class="checkout_block" style="padding-bottom: 16px">
 
         <form accept-charset="UTF-8" action="<%= checkout_process_path(@campaign) %>" method="post" id="payment_form" data-error-action="<%= checkout_error_path(@campaign) %>" data-user-create-action="<%= ajax_create_payment_user_path(@campaign) %>">
 
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
           <input id="sr" name="sr" type="hidden" value="<%= params[:sr] %>">
-          <h4 class="contact">Contact Information</h4>
 
           <fieldset>
-          <label for="fullname">Full Name</label>
-          <input id="fullname" name="fullname" type="text">
+          <input id="fullname" placeholder="Full Name" name="fullname" type="text" class="paymentconfirm_text">
 
-          <label for="email">Email Address</label>
-          <input id="email" name="email" type="text">
+          <input id="email" placeholder="Email Address" name="email" type="text" class="paymentconfirm_text">
 
           <% if @campaign.collect_additional_info %>
           <h4>Additional Information</h4>
@@ -67,18 +64,17 @@
           </fieldset>
           <% end %>
 
-          <h4>Credit/Debit Card <i class="icon icon-lock show_tooltip" data-placement="top" data-title="Payments are encrypted"></i></h4>
+          <h4 style="margin-top: 0px">Credit/Debit Card <i class="icon icon-lock show_tooltip" data-placement="top" data-title="Payments are encrypted"></i></h4>
 
           <fieldset>
             <div class="clearfix">
-              <div class="card_number pull-left" style="margin-right:15px">
-                <label for="card_number">Card Number</label>
-                <input class="javascript-only" name="card_number" id="card_number" type="text" style="width:225px" autocomplete="off">
-                <noscript><input name="card_number" id="card_number" type="text" style="width:225px" autocomplete="off" disabled></noscript>
+              <div class="card_number">
+                <input class="javascript-only paymentconfirm_text" style="width:96%" name="card_number" id="card_number" placeholder="Card Number" type="text" autocomplete="off">
+                <noscript><input name="card_number" id="card_number" type="text" autocomplete="off" disabled></noscript>
               </div>
-              <div class="pull-left">
-                <label>Expiration</label>
-                <select class="javascript-only" id="expiration_month" style="width:118px">
+              <div>
+                <h4 style="margin-top: 0px">Expiration</h4>
+                <select class="javascript-only paymentconfirm_text" id="expiration_month" style="width:118px">
                 <!-- <noscript></select><select id="expiration_month" style="width:118px" disabled></noscript> -->
                   <option value="01" selected>01</option>
                   <option value="02">02</option>
@@ -93,7 +89,7 @@
                   <option value="11">11</option>
                   <option value="12">12</option>
                 </select>
-                <select class="javascript-only" id="expiration_year" style="width:118px">
+                <select class="javascript-only paymentconfirm_text" id="expiration_year" style="width:118px">
                 <!-- <noscript></select><select id="expiration_year" style="width:118px" disabled></noscript> -->
                   <option value="2014" selected>2014</option>
                   <option value="2015">2015</option>
@@ -111,14 +107,14 @@
             </fieldset>
             <fieldset>
               <div class="clearfix">
-                <div class="pull-left" style="margin-right: 15px;">
-                  <label for="security_code">Security Code <i class="icon icon-question-sign show_tooltip" data-placement="top" data-title="For Mastercard, Visa and Discover the security code is a 3 digit number found on the back of the card. For American Express the security code is a 4 digit number found on the front of the card."></i></label>
-                  <input class="javascript-only" id="security_code" name="security_code" type="text"  style="width:225px" autocomplete="off">
+                <div>
+                  <input class="javascript-only paymentconfirm_text" id="security_code" placeholder="Security Code" name="security_code" type="text"  style="width:92%" autocomplete="off">
+                  <i class="icon icon-question-sign show_tooltip" data-placement="top" data-title="For Mastercard, Visa and Discover the security code is a 3 digit number found on the back of the card. For American Express the security code is a 4 digit number found on the front of the card."></i>
+
                   <noscript><input id="security_code" name="security_code" type="text"  style="width:225px" autocomplete="off" disabled></noscript>
                 </div>
-                <div class="billing_postal_code pull-left">
-                  <label for="billing_postal_code">Billing Postal Code</label>
-                  <input class="javascript-only" id="billing_postal_code" name="billing_postal_code" type="text"  style="width:225px">
+                <div class="billing_postal_code">
+                  <input class="javascript-only paymentconfirm_text" placeholder="Billing Postal Code" id="billing_postal_code" name="billing_postal_code" type="text"  style="width:96%">
                   <noscript><input id="billing_postal_code" name="billing_postal_code" type="text"  style="width:225px" disabled></noscript>
                 </div>
               </div>
@@ -155,7 +151,7 @@
         </form>
         <div id="errors" style="display: none"></div>
 
-        <div style="text-align: right; margin-right: 0px"><%= image_tag 'crowdtilt_badge_no_card_logos.png', width: "120px", height: "36px" %></div>
+        <div style="display: none; text-align: right; margin-right: 0px"><%= image_tag 'crowdtilt_badge_no_card_logos.png', width: "120px", height: "36px" %></div>
     </div>
 
   </div>
@@ -199,6 +195,9 @@
 
         </table>
 
+      </div>
+      <div>
+        <%= image_tag 'secured_payment.png', width: "165px", height: "76px" %>
       </div>
 
       <% if @campaign.rewards? %>
