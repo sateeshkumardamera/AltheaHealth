@@ -446,6 +446,13 @@
   .backAnchorColor{
     color: #ff7000;
   }
+  .faq_content{
+    width: 530px;
+    height: 320px;
+  }
+  .mobile_model{
+    height: 480px;
+  }
   
 }
 
@@ -514,8 +521,39 @@
       margin-top: 0px !important;
     }
   }
+  
+  .mobile_model{
+    width: 300px;
+    margin-left: -150px;
+    height: 400px;
+  }
+  .faq_content{
+    width: 280px;
+  }
+  
 }
-@media only screen and (min-device-width: 481px) and (max-device-width: 799px)
+@media only screen and (min-device-width: 481px) and (max-device-width: 640px)
+{
+.payment_text {
+    width: 50% !important;
+    min-width: 20%;
+  }
+  .sidebar {
+    display: none !important;
+  }
+  .checkout_sidebar{
+    float: left !important;
+    width: 50% !important;
+  }
+  .cl_share{
+    margin-left: 0% !important;
+  }
+  .mobile_model{
+    width: 300px;
+    margin-left: -150px;
+  }
+}
+@media only screen and (min-device-width: 641px) and (max-device-width: 799px)
 {
   .payment_text {
     width: 50% !important;
