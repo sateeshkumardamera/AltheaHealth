@@ -21,6 +21,8 @@ Crowdhoster.campaigns =
         $('.payment_text#amount_other').attr('disabled', false);
         $('.payment_text#amount_other').val("");
 
+    $(".faq_anchor").on "click", ->
+      $('.faq_content').attr('src', $(this).attr('value'));
 
     $("#video_image").on "click", ->
       $("#player").removeClass("hidden")
