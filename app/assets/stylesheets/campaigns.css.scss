@@ -20,6 +20,9 @@
       }
     }
 
+    .submit_align {
+      text-align: center;
+    }
     .checkout_block {
       //width: 89%;
       background-color: #ffffff;
@@ -403,7 +406,10 @@
     -webkit-box-shadow: inset 0px 1px 3px 0px #acacac;
     box-shadow: inset 0px 1px 3px 0px #acacac;
   }
-  
+  .submit_div {
+    width: 70%;
+    min-width: 205px;
+  }
   .cl_share{
     float: left;
     //padding: 5%;
@@ -516,9 +522,7 @@
   }
   .main_content{
    
-    .submit_align {
-      text-align: center;
-    }
+    
     .btn{
       margin-top: 0px !important;
     }
