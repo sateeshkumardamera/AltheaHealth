@@ -467,7 +467,7 @@
 
 /****************************/
 /* Mobile phones and Smart phones */ 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+@media only screen and (min-width: 320px) and (max-width: 480px)
 {
   #card_number{
     width: 100% !important;
@@ -495,10 +495,7 @@
     display: block !important;
   }
   .checkout_sidebar{
-    display: none;
-    float: left !important;
-    width: 100% !important;
-    margin-top: 0% !important;
+    display: none !important;
   }
   .confirmation_main_content {
     /*margin-bottom: 5% !important;
@@ -511,7 +508,7 @@
     width: 95% !important;
   }
   .payment_text {
-    width: 50% !important;
+    width: 49% !important;
     min-width: 20%;
   }
   .cl_share{
@@ -539,18 +536,14 @@
   }
   
 }
-@media only screen and (min-device-width: 481px) and (max-device-width: 640px)
+@media only screen and (min-width: 481px) and (max-width: 640px)
 {
 .payment_text {
-    width: 50% !important;
+    width: 49% !important;
     min-width: 20%;
   }
   .sidebar {
     display: none !important;
-  }
-  .checkout_sidebar{
-    float: left !important;
-    width: 50% !important;
   }
   .cl_share{
     margin-left: 0% !important;
@@ -560,19 +553,16 @@
     margin-left: -150px;
   }
 }
-@media only screen and (min-device-width: 641px) and (max-device-width: 799px)
+@media only screen and (min-width: 641px) and (max-width: 799px)
 {
   .payment_text {
-    width: 50% !important;
+    width: 49% !important;
     min-width: 20%;
   }
   .sidebar {
     display: none !important;
   }
-  .checkout_sidebar{
-    float: left !important;
-    width: 50% !important;
-  }
+  
   .cl_share{
     margin-left: 0% !important;
   }
@@ -580,10 +570,10 @@
   /****************************/
 /* Tablets portrait orientation */ 
 
-@media only screen and (min-device-width: 800px) and (max-device-width: 1142px)
+@media only screen and (min-width: 800px) and (max-width: 1142px)
 {
   .payment_text {
-    width: 50% !important;
+    width: 49% !important;
     min-width: 20%;
   }
   .sidebar {
