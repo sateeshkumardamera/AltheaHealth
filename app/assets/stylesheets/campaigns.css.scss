@@ -454,12 +454,14 @@
   .backAnchorColor{
     color: #ff7000;
   }
-  .faq_content{
-    width: 530px;
-    height: 400px;
-  }
+  
   .mobile_model{
-    height: 480px;
+    width: 48%;
+    min-width: 300px;
+    
+    .faq_content{
+      width: 100%;
+    }
   }
   .secure_logo{
     display: none;
@@ -541,15 +543,8 @@
       margin-top: 0px !important;
     }
   }
-  
   .mobile_model{
-    width: 300px;
-    margin-left: -150px;
-    height: 400px;
-  }
-  .faq_content{
-    width: 280px;
-    height: 320px;
+    margin-left: -47%;
   }
   
 }
@@ -577,9 +572,17 @@
   .cl_share{
     margin-left: 0% !important;
   }
-  .mobile_model{
+  /*.mobile_model{
     width: 300px;
     margin-left: -150px;
+  }
+  .faq_content{
+    width: 280px;
+    height: 320px;
+  }*/
+  .mobile_model{
+    margin-left: -25%;
+    margin-top: -20%;
   }
 }
 @media only screen and (min-width: 641px) and (max-width: 799px)
