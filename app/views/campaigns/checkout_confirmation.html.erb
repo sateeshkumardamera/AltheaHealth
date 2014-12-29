@@ -3,7 +3,9 @@
   <div class="container content_box clearfix">
     <div class="confirmation_main_content">
       <%= raw(@campaign.confirmation_page_content) %>
-      <h3><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h3>
+
+      <!-- <h3><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h3> -->
+      <h3><a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>"><%= @campaign.name %></a></h3>
       <!-- <div class="share clearfix">
         <%= render 'shared/share_buttons', campaign: @campaign, settings: @settings %>
       </div>
@@ -48,9 +50,9 @@
     <div class="cl_share">
       <div><label style="text-align: center; font-size: 16px; color: #6b6b6b">Help us spread the word</label></div>
       <div class="share_content">
-      <div class="share_fb"><a href="/web/cysticlife/pub?name=CysticLife&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sa=fb"><%= image_tag "fb.png", alt: "facebook" %></a></div>
-      <div class="share_twitter"><a href="/web/cysticlife/pub?name=CysticLife&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sa=tw"><%= image_tag "twitter.png", alt: "twitter" %></a></div>
-      <div class="share_lin"><a href="/web/cysticlife/pub?name=CysticLife&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sa=li"><%= image_tag "lin.png", alt: "linkedin" %></a></div>
+      <div class="share_fb"><a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sa=fb"><%= image_tag "fb.png", alt: "facebook" %></a></div>
+      <div class="share_twitter"><a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sa=tw"><%= image_tag "twitter.png", alt: "twitter" %></a></div>
+      <div class="share_lin"><a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sa=li"><%= image_tag "lin.png", alt: "linkedin" %></a></div>
       </div>
     </div>
   </div>

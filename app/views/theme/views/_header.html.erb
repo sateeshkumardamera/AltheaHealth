@@ -9,7 +9,7 @@
       <h1><a href="/"><%= @settings.site_name %></a></h1>
 
     <% end %> -->
-    <a href="/"><%= image_tag "banner.png", alt: "logo", :class => "logo_preview" %></a>
+    <a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>" ><%= image_tag "banner.png", alt: "logo", :class => "logo_preview" %></a>
 
     <% if !@settings.header_link_text.blank? && !@settings.header_link_url.blank? %>
     <div class="header_link">
