@@ -198,6 +198,7 @@ class CampaignsController < ApplicationController
   end
 
   def checkout_confirmation
+    @disable_nav = true
     @payment = Payment.where(:ct_payment_id => flash[:payment_guid]).first
     flash.keep(:payment_guid) # Preserve on refresh of this page only
 
