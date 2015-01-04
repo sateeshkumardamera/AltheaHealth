@@ -21,6 +21,14 @@ Crowdhoster.campaigns =
         $('.payment_text#amount_other').attr('disabled', false);
         $('.payment_text#amount_other').val("");
 
+    $("#anonymous").on "change" , ->
+      if($(this).prop('checked'))
+        $("#additional_info").attr('value', 'anonymous')
+      else
+        $("#additional_info").attr('value', '')
+                
+
+
     $(".faq_anchor").on "click", ->
       $('.faq_content').attr('src', $(this).attr('value'));
 
@@ -30,8 +38,8 @@ Crowdhoster.campaigns =
       $(this).hide()
 
     # Checkout section functions:
-    if($('#checkout').length)
-      $('html,body').animate({scrollTop: $('#header')[0].scrollHeight})
+    #if($('#checkout').length)
+      #$('html,body').animate({scrollTop: $('#header')[0].scrollHeight})
 
     $('#quantity').on "change", (e) ->
       quantity = $(this).val()
@@ -84,7 +92,9 @@ Crowdhoster.campaigns =
     $('button[type="submit"]').attr('disabled', true).html('Processing, please wait...')
     $('#card_number').removeAttr('name')
     $('#security_code').removeAttr('name')
-
+    if($("#anonymous").hasClass('checked'))
+      $("#additional_info").attr('value', 'anonymous')
+   
     $form = $(form)
 
     cardData =

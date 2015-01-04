@@ -13,15 +13,17 @@
 
           <fieldset>
           <input id="fullname" placeholder="Full Name" name="fullname" type="text" class="paymentconfirm_text">
-
+          <label><input id="anonymous" name="anonymous" type="checkbox" style="margin-bottom: 7px;" >  Check this box to make an anonymous donation</label>
           <input id="email" placeholder="Email Address" name="email" type="text" class="paymentconfirm_text">
+          <!-- Added for anonymous payments -->
+          <input id="additional_info" name="additional_info" type="hidden"></textarea>
 
-          <% if @campaign.collect_additional_info %>
+          <!--<% if @campaign.collect_additional_info %>
           <h4>Additional Information</h4>
 
           <label for="additional_info"><%= @campaign.additional_info_label %></label>
           <textarea id="additional_info" name="additional_info"></textarea>
-          <% end %>
+          <% end %> -->
           </fieldset>
 
           <% if (@campaign.payment_type == 'fixed' && @campaign.collect_shipping_flag) || (@reward && @reward.collect_shipping_flag) %>
