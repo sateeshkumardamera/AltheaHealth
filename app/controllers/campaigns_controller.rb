@@ -32,15 +32,19 @@ class CampaignsController < ApplicationController
     @amount = params[:amount_other] if params[:amount_other].present?
 
     if @campaign.payment_type == "fixed"
-      if (params.has_key?(:quantity) && params[:quantity].to_i < 3)
+      if (params.has_key?(:quantity) && params[:quantity].to_i < 4)
         @quantity = params[:quantity].to_i
         @amount = ((@quantity * @campaign.fixed_payment_amount.to_f)*100).ceil/100.0
-      elsif (params.has_key?(:quantity) && params[:quantity].to_i == 3 && params.has_key?(:amount_other) && params[:amount_other].to_i > 0)
+      elsif (params.has_key?(:quantity) && params[:quantity].to_i == 4 && params.has_key?(:amount_other) && params[:amount_other].to_i > 0)
         if params[:amount_other].to_i > 0
           @amount = (params[:amount_other].to_i*100).ceil/100.0
-          if params[:amount_other].to_f < @campaign.fixed_payment_amount  
-            redirect_to checkout_amount_url(@campaign), flash: { warning: "Minimum donation is $#{@campaign.fixed_payment_amount.to_i}"}
-          end                
+          #if params[:amount_other].to_f < @campaign.fixed_payment_amount  
+           # redirect_to checkout_amount_url(@campaign), flash: { warning: "Minimum donation is $#{@campaign.fixed_payment_amount.to_i}"}
+          #end
+          if params[:amount_other].to_f < 5  
+            #redirect_to checkout_amount_url(@campaign), flash: { warning: "Minimum donation is $#{@campaign.fixed_payment_amount.to_i}"}
+            redirect_to checkout_amount_url(@campaign), flash: { warning: "Minimum donation is $5"}
+          end 
         else
         redirect_to checkout_amount_url(@campaign), flash: { warning: "Please choose a valid amount!" }
         end
