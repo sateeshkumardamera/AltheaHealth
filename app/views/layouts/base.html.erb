@@ -3,7 +3,7 @@
 
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title><%= @settings.site_name %></title>
+    <!-- <title><%= @settings.site_name %></title> -->
     <%= csrf_meta_tags %>
     <%= yield :metas %>
 
@@ -32,9 +32,10 @@
     <%= yield :footer %>
 
     <div id="powered">
-      <a href="http://open.crowdtilt.com">&nbsp;&nbsp;A Crowdtilt Open Site</a>
+     <!-- <a href="http://open.crowdtilt.com">&nbsp;&nbsp;A Crowdtilt Open Site</a>
       &nbsp;&nbsp;<%= image_tag 'crowdtiltcircle.png' %>&nbsp;&nbsp;
-      <a href="http://www.crowdtilt.com">Powered by Crowdtilt</a>
+      <a href="http://www.crowdtilt.com">Powered by Crowdtilt</a> -->
+      <a target="_blank" href="http://www.altheahealth.com"><%= image_tag 'powered.png' %></a>
     </div>
 
     <% if Rails.env.development? %>

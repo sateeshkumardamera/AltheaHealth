@@ -15,6 +15,7 @@ class CampaignsController < ApplicationController
   end
 
   def checkout_amount
+    @changePageTitle = true
     @reward = false
     if params.has_key?(:reward) && params[:reward].to_i != 0
       @reward = Reward.find_by_id(params[:reward])
@@ -26,6 +27,7 @@ class CampaignsController < ApplicationController
   end
 
     def checkout_payment
+    @changePageTitle = true
     @reward = false
     params[:amount].sub!(',', '') if params[:amount].present?
     params[:amount_other].sub!(',', '') if params[:amount_other].present?
@@ -203,6 +205,7 @@ class CampaignsController < ApplicationController
 
   def checkout_confirmation
     @disable_nav = true
+    @changePageTitle = true
     @payment = Payment.where(:ct_payment_id => flash[:payment_guid]).first
     flash.keep(:payment_guid) # Preserve on refresh of this page only
 
