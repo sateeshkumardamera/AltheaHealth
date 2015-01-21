@@ -176,10 +176,18 @@ class CampaignsController < ApplicationController
       error_attributes[:ct_charge_request_id] = response[:body]['request_id'] if response[:body]['request_id']
       error_attributes[:ct_charge_request_error_id] = response[:body]['error_id'] if response[:body]['error_id']
       @payment.update_attributes(error_attributes)
+      @payment.address_one = "Error in Processing payment: #{response[:status]} #{response[:body]}"
+      # Send error email to support
+      ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
+      logger.info "ERROR WITH Sending Supprot EMAIL: #{$!.message}"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. Please try again or contact support by emailing open@crowdtilt.com" } and return
     rescue StandardError => exception
       @payment.update_attributes({status: 'error'})
-      logger.error "ERROR WITH POST TO /payments: #{exception.message}"
+        logger.error "ERROR WITH POST TO /payments: #{exception.message}"
+      @payment.address_one = "Error in Processing payment: #{exception.message}"
+      # Send error email to support
+      ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
+        logger.info "ERROR WITH Sending Supprot EMAIL: #{$!.message}"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. Please try again or contact support by emailing open@crowdtilt.com" } and return
     end
 
@@ -191,7 +199,7 @@ class CampaignsController < ApplicationController
     # Sync campaign data
     @campaign.update_api_data(response['payment']['campaign'])
     @campaign.save
-
+    
     # Send confirmation emails
     UserMailer.payment_confirmation(@payment, @campaign).deliver rescue 
       logger.info "ERROR WITH EMAIL RECEIPT: #{$!.message}"
