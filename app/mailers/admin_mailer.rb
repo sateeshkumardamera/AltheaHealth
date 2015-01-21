@@ -1,7 +1,7 @@
 class AdminMailer < ActionMailer::Base
   layout 'default_mailer'
-  default from: "me@sandbox2aa0585151424332bfa819edb0dc9b13.mailgun.org"
-
+  default from: "Althea Social Funds <#{ENV['MAILGUN_USERNAME']}>"
+  
   helper :campaigns
 
   def payment_notification(payment_id)
