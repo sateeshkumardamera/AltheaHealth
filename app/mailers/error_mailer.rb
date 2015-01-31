@@ -16,7 +16,7 @@ class ErrorMailer < ActionMailer::Base
       mail(
         to: "support@altheahealth.com",
         cc: recipients,
-        subject: "Error while making paymnet for the campaign: \"#{@campaign.name}\""
+        subject: "Error while making payment for the campaign: \"#{@campaign.name}\""
       )
     end
   end
