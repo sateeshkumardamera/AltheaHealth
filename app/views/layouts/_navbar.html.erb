@@ -84,7 +84,7 @@
     <% unless @disable_nav %>
       <div style="font-size: 18px; width: 76%; margin-left: auto; margin-right: auto;"><%= link_to_function "Back", "history.back()", :class => "link", :style => "color: #ff7000 !important; padding: 5px;"  %></div>
     <% else %>
-      <div style="font-size: 18px; width: 76%; margin-left: auto; margin-right: auto;"><a style="color: #ff7000 !important; padding: 5px" href="/web/cysticlife/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>" >Campaign Home</a></div>
+      <div style="font-size: 18px; width: 76%; margin-left: auto; margin-right: auto;"><a style="color: #ff7000 !important; padding: 5px" href="/web/cysticlife/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" >Campaign Home</a></div>
     <% end %>
   </div>
       
