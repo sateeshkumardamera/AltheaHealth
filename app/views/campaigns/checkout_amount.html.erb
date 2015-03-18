@@ -17,20 +17,32 @@
                 <div style="float: right"><i class="icon icon-lock" data-placement="top"></i></div>
                 <h4 class="amount_header"><strong> Select Donation Level:</strong></h4><br>
               </div>
+              
+              <% if @campaign.facebook_description.nil? %>
+                  <div class="payment_div">
+                    <input type="radio" name="quantity" class="payment_radio" id="quantity" value=<%= short_price((@campaign.fixed_payment_amount )) %> %>
+                    <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount ), '$', 0) %></label>
+                  </div><br>
+                  <div class="payment_div">
+                    <input type="radio" name="quantity" class="payment_radio" id="quantity" value=<%= short_price((@campaign.fixed_payment_amount * 2 )) %> %>
+                    <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount * 2 ), '$', 0) %></label>
+                  </div><br>
+                  <div class="payment_div">
+                    <input type="radio" name="quantity" class="payment_radio" id="quantity" value=<%= short_price((@campaign.fixed_payment_amount * 3 )) %> %>
+                    <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount * 3 ), '$', 0) %></label>
+                  </div><br>
+
+               <% else %>
+                  <% @amountArray.each do |amount_item| %>
+                    <div class="payment_div">
+                      <input type="radio" name="quantity" class="payment_radio" id="quantity" value=<%= short_price(amount_item) %> %>
+                      <label class="payment_label">Donate <%= short_price(amount_item, '$', 0) %></label>
+                    </div><br>
+                  <% end %>
+
+              <% end %> 
               <div class="payment_div">
-                <input type="radio" name="quantity" class="payment_radio" id="quantity" value=1 %>
-                <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount ), '$', 0) %></label>
-              </div><br>
-              <div class="payment_div">
-                <input type="radio" name="quantity" class="payment_radio" id="quantity" value=2 %>
-                <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount * 2 ), '$', 0) %></label>
-              </div><br>
-              <div class="payment_div">
-                <input type="radio" name="quantity" class="payment_radio" id="quantity" value=3 %>
-                <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount * 3 ), '$', 0) %></label>
-              </div><br>
-              <div class="payment_div">
-                <input type="radio" name="quantity" class="payment_radio_other" id="quantity" value=4 %>
+                <input type="radio" name="quantity" class="payment_radio_other" id="quantity" value=1 %>
                 <label class="payment_label">Other $</label>
                 <!-- <input id="amount_other" disabled=<%= @quantity == 4? '':'disabled' %> placeholder= "Minimum <%= short_price((@campaign.fixed_payment_amount ), '$', 0) %>"  type="text" class="payment_text"  name="amount_other" /> -->
                 <input id="amount_other" disabled=<%= @quantity == 4? '':'disabled' %>"  type="text" class="payment_text"  name="amount_other" />

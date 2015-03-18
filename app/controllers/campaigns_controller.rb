@@ -16,6 +16,9 @@ class CampaignsController < ApplicationController
 
   def checkout_amount
     @changePageTitle = true
+    if !@campaign.facebook_description.nil?
+      @amountArray = @campaign.facebook_description.split(',')
+    end
     @reward = false
     if params.has_key?(:reward) && params[:reward].to_i != 0
       @reward = Reward.find_by_id(params[:reward])
@@ -32,12 +35,15 @@ class CampaignsController < ApplicationController
     params[:amount].sub!(',', '') if params[:amount].present?
     params[:amount_other].sub!(',', '') if params[:amount_other].present?
     @amount = params[:amount_other] if params[:amount_other].present?
-
+    logger.info "CROWDTILT AMOUNT IS*************#{params[:quantity]}"
     if @campaign.payment_type == "fixed"
-      if (params.has_key?(:quantity) && params[:quantity].to_i < 4)
+      if (params.has_key?(:quantity) && params[:quantity].to_i != 1)
         @quantity = params[:quantity].to_i
-        @amount = ((@quantity * @campaign.fixed_payment_amount.to_f)*100).ceil/100.0
-      elsif (params.has_key?(:quantity) && params[:quantity].to_i == 4 && params.has_key?(:amount_other) && params[:amount_other].to_i > 0)
+        #@amount = ((@quantity * @campaign.fixed_payment_amount.to_f)*100).ceil/100.0
+        @amount = (@quantity*100).ceil/100.0
+        logger.info "CROWDTILT @quantity IS*************#{@quantity}"
+        logger.info "CROWDTILT @amount IS*************#{@amount}"
+      elsif (params.has_key?(:quantity) && params[:quantity].to_i == 1 && params.has_key?(:amount_other) && params[:amount_other].to_i > 0)
         if params[:amount_other].to_i > 0
           @amount = (params[:amount_other].to_i*100).ceil/100.0
           #if params[:amount_other].to_f < @campaign.fixed_payment_amount  

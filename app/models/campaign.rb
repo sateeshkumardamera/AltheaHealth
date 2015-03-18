@@ -40,6 +40,7 @@ class Campaign < ActiveRecord::Base
                     styles: { thumb: "100x100#" }
 
   before_save :set_min_amount
+  before_save :replace_commas_in_fb_description
 
   def update_api_data(campaign)
     self.ct_campaign_id = campaign['id']
@@ -91,6 +92,11 @@ class Campaign < ActiveRecord::Base
   def set_min_amount
     if self.payment_type == "any"
       self.min_payment_amount = 1.0
+    end
+  end
+  def replace_commas_in_fb_description
+    if !(self.facebook_description.nil?)
+      self.facebook_description.gsub(' ', '')
     end
   end
 

@@ -5,7 +5,7 @@
   
   .main_content {
     width: 60%;
-    min-width: 270px;
+    min-width: 220px;
     float: left;
     h3 {
       //margin: 0px 0px 30px;
@@ -202,7 +202,8 @@
     margin-right: 12.5%;
     right: 0;
     width: 30%;
-    height: 510px;
+    height: 100%;
+    z-index: -1;
     //margin-top: 5%;
     position: absolute;
     background-color: rgba(211, 211, 211, 0.35);
