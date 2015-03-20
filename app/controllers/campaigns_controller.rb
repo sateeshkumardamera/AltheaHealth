@@ -16,7 +16,7 @@ class CampaignsController < ApplicationController
 
   def checkout_amount
     @changePageTitle = true
-    if !@campaign.facebook_description.nil?
+    if !(@campaign.facebook_description.nil? or @campaign.facebook_description == '')
       @amountArray = @campaign.facebook_description.split(',')
     end
     @reward = false

@@ -18,7 +18,7 @@
                 <h4 class="amount_header"><strong> Select Donation Level:</strong></h4><br>
               </div>
               
-              <% if @campaign.facebook_description.nil? %>
+              <% if @campaign.facebook_description.nil? or @campaign.facebook_description == ''  %>
                   <div class="payment_div">
                     <input type="radio" name="quantity" class="payment_radio" id="quantity" value=<%= short_price((@campaign.fixed_payment_amount )) %> %>
                     <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount ), '$', 0) %></label>
