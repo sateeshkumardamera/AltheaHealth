@@ -14,7 +14,7 @@ class ErrorMailer < ActionMailer::Base
       @campaign = campaign
       @payment = payment
       mail(
-        to: "support@altheahealth.com",
+        to: "#{ENV['SUPPORT_EMAIL']}",
         cc: recipients,
         subject: "Error while making payment for the campaign: \"#{@campaign.name}\""
       )
