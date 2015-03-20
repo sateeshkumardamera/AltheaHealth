@@ -29,7 +29,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-    def checkout_payment
+  def checkout_payment
     @changePageTitle = true
     @reward = false
     params[:amount].sub!(',', '') if params[:amount].present?
@@ -99,7 +99,7 @@ class CampaignsController < ApplicationController
     ct_card_id = params[:ct_card_id]
     sr = params[:sr]
 
-    #calculate amount and fee in cents
+    # calculate amount and fee in cents
     fee = calculate_processing_fee(payment_params[:amount])
 
     @reward = false
@@ -151,14 +151,13 @@ class CampaignsController < ApplicationController
     @payment.reward = @reward if @reward
     @payment.save
 
-    # Execute the payment via the Crowdtilt API, if it fails, redirect user
-    begin
-      payment = {
-        amount: payment_params[:amount],
-        user_fee_amount: user_fee_amount,
-        admin_fee_amount: admin_fee_amount,
-        user_id: ct_user_id,
-        card_id: ct_card_id,
+    payment = {
+        :amount          => payment_params[:amount],
+        :currency        => "usd",
+        :source          => params[:stripeToken],
+        :description     => payment_params[:email],
+        # :application_fee => user_fee_amount,
+        
         metadata: {
           fullname: payment_params[:fullname],
           email: payment_params[:email],
@@ -168,53 +167,25 @@ class CampaignsController < ApplicationController
           additional_info: payment_params[:additional_info]
         }
       }
-      @campaign.production_flag ? Crowdtilt.production(@settings) : Crowdtilt.sandbox
 
-      logger.info "CROWDTILT API REQUEST: /campaigns/#{@campaign.ct_campaign_id}/payments"
-      logger.info payment
-      response = Crowdtilt.post('/campaigns/' + @campaign.ct_campaign_id + '/payments', {payment: payment})
-      logger.info "CROWDTILT API RESPONSE:"
-      logger.info response
-    rescue Crowdtilt::ApiError => api_error
-      response = api_error.response
-      logger.error "API ERROR WITH POST TO /payments: #{response[:status]} #{response[:body]}"
-      error_attributes = {status: 'error'}
-      error_attributes[:ct_charge_request_id] = response[:body]['request_id'] if response[:body]['request_id']
-      error_attributes[:ct_charge_request_error_id] = response[:body]['error_id'] if response[:body]['error_id']
-      @payment.update_attributes(error_attributes)
-      @payment.address_one = "Error in Processing payment: #{response[:status]} #{response[:body]}"
-      # Send error email to support
-      ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
-      logger.info "ERROR WITH Sending Supprot EMAIL: #{$!.message}"
-      redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. Please try again or contact support by emailing open@crowdtilt.com" } and return
-    rescue StandardError => exception
-      @payment.update_attributes({status: 'error'})
-        logger.error "ERROR WITH POST TO /payments: #{exception.message}"
-      @payment.address_one = "Error in Processing payment: #{exception.message}"
-      # Send error email to support
-      ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
-        logger.info "ERROR WITH Sending Supprot EMAIL: #{$!.message}"
-      redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. Please try again or contact support by emailing open@crowdtilt.com" } and return
+    begin
+      response = Stripe::Charge.create(payment)
+    rescue Stripe::CardError => e
+      redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. #{e.message}" } and return
     end
 
+    if response.status != 'succeeded'
+      redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment." } and return
+    end
+    
+    result = { response: response, payment: payment.merge!({ user_fee_amount: user_fee_amount, admin_fee_amount: admin_fee_amount }) }
+    
     # Sync payment data
-    @payment.update_api_data(response['payment'])
-    @payment.ct_charge_request_id = response['request_id']
+    @payment.update_api_data(result)
+    @payment.ct_charge_request_id = response.id
     @payment.save
 
-    # Sync campaign data
-    @campaign.update_api_data(response['payment']['campaign'])
-    @campaign.save
-    
-    # Send confirmation emails
-    UserMailer.payment_confirmation(@payment, @campaign).deliver rescue 
-      logger.info "ERROR WITH EMAIL RECEIPT: #{$!.message}"
-
-    AdminMailer.payment_notification(@payment.id).deliver rescue 
-      logger.info "ERROR WITH ADMIN NOTIFICATION EMAIL: #{$!.message}"
-
-    redirect_to checkout_confirmation_url(@campaign, :sr => params[:sr]), :status => 303, :flash => { payment_guid: @payment.ct_payment_id }
-
+    redirect_to checkout_confirmation_url(@campaign, :sr => params[:sr]), :status => 303, :flash => { payment_guid: @payment.ct_payment_id } and return
   end
 
   def checkout_confirmation

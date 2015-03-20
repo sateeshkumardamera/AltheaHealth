@@ -1,3 +1,8 @@
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+  Stripe.setPublishableKey('pk_test_M39vfbo9zpvg2G1ot1Y11ci1');
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <div id="checkout">
   <div class="container content_box clearfix">
@@ -71,13 +76,12 @@
           <fieldset>
             <div class="clearfix">
               <div class="card_number">
-                <input class="javascript-only paymentconfirm_text" style="width:96%" name="card_number" id="card_number" placeholder="Card Number" type="text" autocomplete="off">
+                <input class="javascript-only paymentconfirm_text" style="width:96%" name="card_number" id="card_number" placeholder="Card Number" type="text" autocomplete="off" data-stripe="number">
                 <noscript><input name="card_number" id="card_number" type="text" autocomplete="off" disabled></noscript>
               </div>
               <div>
                 <h4 style="margin-top: 0px">Expiration</h4>
-                <select class="javascript-only paymentconfirm_text" id="expiration_month" style="width:118px">
-                <!-- <noscript></select><select id="expiration_month" style="width:118px" disabled></noscript> -->
+                <select class="javascript-only paymentconfirm_text" id="expiration_month" style="width:118px" data-stripe="exp-month">
                   <option value="01" selected>01</option>
                   <option value="02">02</option>
                   <option value="03">03</option>
@@ -91,8 +95,7 @@
                   <option value="11">11</option>
                   <option value="12">12</option>
                 </select>
-                <select class="javascript-only paymentconfirm_text" id="expiration_year" style="width:118px">
-                <!-- <noscript></select><select id="expiration_year" style="width:118px" disabled></noscript> -->
+                <select class="javascript-only paymentconfirm_text" id="expiration_year" style="width:118px" data-stripe="exp-year">
                   <option value="2014" selected>2014</option>
                   <option value="2015">2015</option>
                   <option value="2016">2016</option>
@@ -110,7 +113,7 @@
             <fieldset>
               <div class="clearfix">
                 <div>
-                  <input class="javascript-only paymentconfirm_text" id="security_code" placeholder="Security Code" name="security_code" type="text"  style="width:90%" autocomplete="off">
+                  <input class="javascript-only paymentconfirm_text" id="security_code" placeholder="Security Code" name="security_code" type="text"  style="width:90%" autocomplete="off" data-stripe="cvc">
                   <i class="icon icon-question-sign show_tooltip" data-placement="top" data-title="For Mastercard, Visa and Discover the security code is a 3 digit number found on the back of the card. For American Express the security code is a 4 digit number found on the front of the card."></i>
 
                   <noscript><input id="security_code" name="security_code" type="text"  style="width:225px" autocomplete="off" disabled></noscript>
@@ -138,7 +141,7 @@
           <% end%>
 
           <div class="payment-submit javascript-only">
-            <button class="btn show_loader" type="submit" data-total="<%= number_with_precision(@total, precision: 2) %>" data-loader="payment_form">
+            <button class="btn show_loader" type="submit" data-loader="payment_form">
               Confirm payment of $<%= number_with_precision(@total, :delimiter => ",", precision: 2) %>
             </button>
             <span class="loader" data-loader="payment_form" style="display:none"></span>
@@ -219,8 +222,3 @@
 
   </div>
 </div>
-
-<%= javascript_include_tag "https://api.crowdtilt.com/v1/js/crowdtilt.js" %>
-<%= javascript_tag do %>
-  crowdtilt.init('<%= @campaign.production_flag ? 'production' : 'sandbox' %>')
-<% end %>
