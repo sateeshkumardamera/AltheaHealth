@@ -1,6 +1,29 @@
+// --------- Stripe token and validation
+function stripeResponseHandler(status, response) {
+  var $form = $('#payment_form');
 
+  if (response.error) {
+    $form.find('.payment-errors').text(response.error.message);
+    $form.find('button').prop('disabled', false);
+  } else {
+    // response contains id and card, which contains additional card details
+    $form.append($('<input type="hidden" name="stripeToken" />').val(response.id));
+    $form.get(0).submit();
+  }
+};
+
+function setStripeToken(form){
+  var $form = $(form);
+  // Disable the submit button to prevent repeated clicks
+  $form.find('button').prop('disabled', true);
+  Stripe.card.createToken($form, stripeResponseHandler);
+  // Prevent the form from submitting with the default action
+  return false;
+}
+
+
+// ----------- other validation
 $( document ).ready(function() {
-
   // validate '/admin/site-settings'
   $("#admin_site_settings_form").validate({
     //  by default, validate ignores any currently hidden fields, which is a problem since we allow users to hide fields.
@@ -291,7 +314,7 @@ $( document ).ready(function() {
 
     // custom handler to call named function "do_payment"
     submitHandler: function(form) {
-      Crowdhoster.campaigns.submitPaymentForm(form);
+      setStripeToken(form);
     },
 
     // validate the previously selected element when the user clicks out

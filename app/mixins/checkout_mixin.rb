@@ -14,7 +14,7 @@ module CheckoutMixin
   # to be used in response to javascript payment-creation requests (eg checkout_process and checkout_error)
   def basic_payment_info(params)
     info = {
-        client_timestamp: params.has_key?(:client_timestamp) ? params[:client_timestamp].to_i : nil,
+        client_timestamp: params[:client_timestamp].present? ? params[:client_timestamp].to_i : nil,
         ct_tokenize_request_id: params[:ct_tokenize_request_id],
         fullname: params[:fullname],
         email: params[:email],

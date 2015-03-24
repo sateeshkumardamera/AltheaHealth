@@ -52,16 +52,19 @@ class Payment < ActiveRecord::Base
       end
   end
 
-  def update_api_data(payment)
-    self.ct_payment_id = payment['id']
-    self.status = payment['status']
-    self.amount = payment['amount']
+  def update_api_data(result)
+    payment = result[:payment]
+    response = result[:response]
+    
+    self.ct_payment_id = response.source.id
+    self.status = response.status
+    self.amount = response.amount
     self.user_fee_amount = payment['user_fee_amount']
     self.admin_fee_amount = payment['admin_fee_amount']
-    self.card_type = payment['card']['card_type']
-    self.card_last_four = payment['card']['last_four']
-    self.card_expiration_month = payment['card']['expiration_month']
-    self.card_expiration_year = payment['card']['expiration_year']
+    self.card_type = response.source.brand
+    self.card_last_four = response.source.last4
+    self.card_expiration_month = response.source.exp_month
+    self.card_expiration_year =response.source.exp_year
   end
 
   def refund!
