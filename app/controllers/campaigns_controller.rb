@@ -34,15 +34,16 @@ class CampaignsController < ApplicationController
     @reward = false
     params[:amount].sub!(',', '') if params[:amount].present?
     params[:amount_other].sub!(',', '') if params[:amount_other].present?
+    params[:quantity].sub!(',', '') if params[:quantity].present?
     @amount = params[:amount_other] if params[:amount_other].present?
-    logger.info "CROWDTILT AMOUNT IS*************#{params[:quantity]}"
+    logger.info "ALTHEA AMOUNT IS*************#{params[:quantity]}"
     if @campaign.payment_type == "fixed"
       if (params.has_key?(:quantity) && params[:quantity].to_i != 1)
         @quantity = params[:quantity].to_i
         #@amount = ((@quantity * @campaign.fixed_payment_amount.to_f)*100).ceil/100.0
         @amount = (@quantity*100).ceil/100.0
-        logger.info "CROWDTILT @quantity IS*************#{@quantity}"
-        logger.info "CROWDTILT @amount IS*************#{@amount}"
+        logger.info "ALTHEA @quantity IS*************#{@quantity}"
+        logger.info "ALTHEA @amount IS*************#{@amount}"
       elsif (params.has_key?(:quantity) && params[:quantity].to_i == 1 && params.has_key?(:amount_other) && params[:amount_other].to_i > 0)
         if params[:amount_other].to_i > 0
           @amount = (params[:amount_other].to_i*100).ceil/100.0
@@ -149,6 +150,7 @@ class CampaignsController < ApplicationController
     end
 
     @payment.reward = @reward if @reward
+    @payment.status = 'pending'
     @payment.save
 
     payment = {
@@ -171,11 +173,15 @@ class CampaignsController < ApplicationController
     begin
       response = Stripe::Charge.create(payment)
     rescue Stripe::CardError => e
+      response.status = 'error'
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. #{e.message}" } and return
     end
 
     if response.status != 'succeeded'
+      response.status = 'error'
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment." } and return
+    else
+      response.status = 'charged'
     end
     
     result = { response: response, payment: payment.merge!({ user_fee_amount: user_fee_amount, admin_fee_amount: admin_fee_amount }) }
