@@ -139,9 +139,9 @@ class CampaignsController < ApplicationController
     if !payment_params[:client_timestamp].nil? && (existing_payment = @campaign.payments.where(payment_params).first)
       case existing_payment.status
       when nil
-        flash_msg = { info: "Your payment is still being processed! If you have not received a confirmation email, please try again or contact support by emailing open@crowdtilt.com" }
+        flash_msg = { info: "Your payment is still being processed! If you have not received a confirmation email, please try again or contact support by emailing support@altheahealth.com" }
       when 'error'
-        flash_msg = { error: "There was an error processing your payment. Please try again or contact support by emailing open@crowdtilt.com." }
+        flash_msg = { error: "There was an error processing your payment. Please try again or contact support by emailing support@altheahealth.com." }
       else
         # A status other than nil or 'error' indicates success! Treat as original payment
         redirect_to checkout_confirmation_url(@campaign, :sr => params[:sr]), :status => 303, :flash => { payment_guid: @payment.ct_payment_id } and return
@@ -158,6 +158,7 @@ class CampaignsController < ApplicationController
         :currency        => "usd",
         :source          => params[:stripeToken],
         :description     => payment_params[:email],
+        :receipt_email   => payment_params[:email],
         # :application_fee => user_fee_amount,
         
         metadata: {

@@ -157,14 +157,14 @@
         <div id="errors" style="display: none"></div>
 
         <!--<div style="text-align: right; margin-right: 0px"><%= image_tag 'crowdtilt_badge_no_card_logos.png', width: "120px", height: "36px" %></div>-->
-        <div class="secure_logo"><%= image_tag 'secured_payment_mini.png', width: "134px", height: "36px" %></div>
+        <div class="secure_logo"><%= image_tag 'stripe_badge.png', width: "200px" %></div>
     </div>
 
   </div>
 
     <div class="sidebar">
       <div class="crowdtilt-powered clearfix">
-        <%= image_tag 'crowdtilt_badge.png', width: "317px", height: "36px" %>
+        <%= image_tag 'stripe_badge.png', width: "348px", height: "36px" %>
       </div>
       <div class="well">
         <div class="clearfix">
@@ -202,9 +202,9 @@
         </table>
 
       </div>
-      <div>
+      <!-- <div>
         <%= image_tag 'secured_payment.png', width: "165px", height: "76px" %>
-      </div>
+      </div> -->
 
       <% if @campaign.rewards? %>
       <div class="well rewards">
