@@ -22,6 +22,21 @@ class Settings < ActiveRecord::Base
   has_attached_file :facebook_image,
                     styles: { thumb: "100x100#" }
 
+def getHeaderUrl(headers, host)
+  @headerArray = headers.split('|')
+  @headerArray.each do |header_item|
+    @headerItemArray = header_item.split(',')
+    if !@headerItemArray.nil? && !@headerItemArray[0].nil? && !@headerItemArray[1].nil?
+      @hostname = @headerItemArray[0]
+      @imageUrl = @headerItemArray[1]
+    end
+    if @hostname == host
+      return @imageUrl
+    end
+  end
+  return ''
+end
+
   def billing_statement_text
     ('CH ' + site_name.upcase)[0, 18]
   end
