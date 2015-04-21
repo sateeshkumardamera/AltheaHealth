@@ -202,8 +202,9 @@
     margin-right: 12.5%;
     right: 0;
     width: 30%;
-    height: 100%;
-    z-index: -1;
+    min-height: 510px;
+    //height: 100%;
+    //z-index: -1;
     //margin-top: 5%;
     position: absolute;
     background-color: rgba(211, 211, 211, 0.35);
