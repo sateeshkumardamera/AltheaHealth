@@ -5,6 +5,12 @@ function stripeResponseHandler(status, response) {
   if (response.error) {
     $form.find('.payment-errors').text(response.error.message);
     $form.find('button').prop('disabled', false);
+    $('#errors').empty();
+    $('#errors').append(response.error.message);
+    $('#refresh-msg').hide();
+    $('#checkout .main_content #errors').css('color', '#b94a48');
+    $('#errors').show();
+    $('.loader').hide();
   } else {
     // response contains id and card, which contains additional card details
     $form.append($('<input type="hidden" name="stripeToken" />').val(response.id));
