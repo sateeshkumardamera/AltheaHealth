@@ -146,6 +146,7 @@
             <button class="btn show_loader" type="submit" data-loader="payment_form">
               Confirm payment of $<%= number_with_precision(@total, :delimiter => ",", precision: 2) %>
             </button>
+            <%= link_to_function '<button type="button" class="btn">Back</button>'.html_safe , "history.back()" %>
             <span class="loader" data-loader="payment_form" style="display:none"></span>
             <div id="refresh-msg" style="display: none; color: red; margin-top: 10px">Your payment is being processed! Please do not refresh this page.</div>
           </div>

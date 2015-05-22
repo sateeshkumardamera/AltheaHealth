@@ -104,7 +104,7 @@
           <% end %>
 
 
-          <div class="submit_div"><p class="submit_align" ><button type="submit" class="btn" id="continue_to_checkout">    Donate    </button></p></div>
+          <div class="submit_div"><p class="submit_align" ><button type="submit" class="btn" id="continue_to_checkout">    Donate    </button><%= link_to_function '<button type="button" class="btn">Back</button>'.html_safe , "history.back()" %></p></div>
 
           <p style="font-size: 13px; margin-top: 20px">All donations are fully tax-deductible to fullest extent permitted by law.</p>
 
