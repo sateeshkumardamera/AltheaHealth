@@ -416,6 +416,51 @@
     width: 70%;
     min-width: 205px;
   }
+  
+  .cl_share_model{
+    //float: left;
+    //padding: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 80%;
+    min-width: 215px;
+    
+   // background: white;
+   // border-radius: 2px;
+    
+   // -moz-box-shadow: inset 0px 1px 1px 0px #acacac;
+   // -webkit-box-shadow: inset 0px 1px 1px 0px #acacac;
+   // box-shadow: inset 0px 1px 1px 0px #acacac;
+    
+    .share_content{
+      padding-left: 15%;
+      margin-top: 10%;
+    }
+    .share_fb{
+      width: 20%;
+      float: left;
+      padding: 2%;
+    }
+    .share_twitter{
+      width: 20%;
+      float: left;
+      padding: 2%;
+    }
+    .share_lin{
+      width: 20%;
+      float: left;
+      padding: 2%;
+    }
+    .share_pin{
+      width: 20%;
+      float: left;
+      padding: 2%;
+      margin-top: 5%;
+    }
+  }
+
+  
   .cl_share{
     float: left;
     //padding: 5%;
