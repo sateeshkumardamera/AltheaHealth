@@ -128,10 +128,18 @@ class CampaignsController < ApplicationController
     # TODO: Check to make sure the amount is valid here
     # Create the payment record in our db, if there are errors, redirect the user
     @payment = @campaign.payments.new(payment_params)
+    
 
     unless @payment.valid?
       error_messages = @payment.errors.full_messages.join(', ')
       redirect_to checkout_amount_url(@campaign), flash: { error: error_messages } and return
+    end
+    
+    # Check if there's an existing sr value in the payment which has been from url params.
+    # if there is no sr then assigning sr which is there in cookie 
+    if @payment.sponsor_reference == ''
+      logger.info "ALTHEA SPONSOR REFERENCE CODE IS*************#{cookies[:alt_sr]}"
+      @payment.sponsor_reference = cookies[:alt_sr]
     end
 
     # Check if there's an existing payment with the same payment_params and client_timestamp. 
