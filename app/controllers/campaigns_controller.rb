@@ -142,6 +142,10 @@ class CampaignsController < ApplicationController
       @payment.sponsor_reference = cookies[:alt_sr]
     end
 
+    if @payment.sponsor_reference.nil? || @payment.sponsor_reference == 'null'
+        @payment.sponsor_reference = ''
+    end
+    
     # Check if there's an existing payment with the same payment_params and client_timestamp. 
     # If exists, look at the status to route accordingly. 
     if !payment_params[:client_timestamp].nil? && (existing_payment = @campaign.payments.where(payment_params).first)
