@@ -1,3 +1,10 @@
+
+<% if !user_signed_in?%>
+    <div style="text-align: center; font-size: large; padding-top: 50px;">
+      You are not allowed to access this content.
+    </div>
+<% else %>
+
 <div id="homepage">
   <div class="container clearfix">
 
@@ -78,3 +85,5 @@
     </div>
   </div>
 </div>
+
+<% end %>
