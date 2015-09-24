@@ -143,7 +143,7 @@ class CampaignsController < ApplicationController
     end
 
     if @payment.sponsor_reference.nil? || @payment.sponsor_reference == 'null'
-        @payment.sponsor_reference = ''
+        @payment.sponsor_reference = cookies[:alt_sr]
     end
     
     # Check if there's an existing payment with the same payment_params and client_timestamp. 
