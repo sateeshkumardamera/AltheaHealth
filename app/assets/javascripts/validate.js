@@ -164,7 +164,7 @@ $( document ).ready(function() {
       "reward[][delivery_date]": { required: true },
       "reward[][number]": { number: true },
       "campaign[contributor_reference]": { required: true },
-      "campaign[video_embed_id]": { minlength: 11 , maxlength: 11},
+      //"campaign[video_embed_id]": { minlength: 11 , maxlength: 11},
       "campaign[primary_call_to_action_button]": { required: true },
       "campaign[secondary_call_to_action_button]": { required: true },
       "campaign[comments_shortname]": { required: { depends: function(element) {
@@ -229,10 +229,10 @@ $( document ).ready(function() {
       "campaign[contributor_reference]": {
         required: "You must choose a word"
       },
-      "campaign[video_embed_id]": {
+      /*"campaign[video_embed_id]": {
         minlength: "Your Youtube ID is too short! <br> It should be 11 characters long.",
         maxlength: "Oops. Don't include the whole link. <br> Only paste the last 11 characters of the URL."
-      },
+      },*/
       "campaign[primary_call_to_action_button]": {
         required: "You need some text here -- can't raise funds without it!"
       },
