@@ -88,11 +88,11 @@
                 </div>
               <% end %>
               <span class="blue_button expired">
-                <%= @campaign.primary_call_to_action_button %>
+                Contribute<!-- <%= @campaign.primary_call_to_action_button %> -->
               </span>
             <% else %>
               <a href="<%= url_for checkout_amount_path(@campaign, :sr => params[:sr]) %>" class="blue_button" id="main_cta">
-                <%= @campaign.primary_call_to_action_button %>
+                Contribute<!-- <%= @campaign.primary_call_to_action_button %> -->
               </a>
             <% end %>
           </div>
@@ -195,11 +195,11 @@
     <div class="center">
       <% if @campaign.expired? %>
           <span class="blue_button expired">
-            <%= @campaign.secondary_call_to_action_button %>
+            Contribute<!-- <%= @campaign.secondary_call_to_action_button %> -->
           </span>
       <% else %>
         <a href="<%= url_for checkout_amount_path(@campaign) %>" class="blue_button" id="secondary_cta">
-          <%= @campaign.secondary_call_to_action_button %>
+          Contribute<!-- <%= @campaign.secondary_call_to_action_button %>-->
         </a>
       <% end %>
       <div class="powered_by_crowdtilt">
