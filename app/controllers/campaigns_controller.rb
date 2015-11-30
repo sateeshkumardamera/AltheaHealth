@@ -134,6 +134,10 @@ class CampaignsController < ApplicationController
       admin_fee_amount = fee
     end
     logger.info "User Fee Amount ******#{user_fee_amount}"
+    if user_fee_amount>0
+      user_fee_amount += 30;
+    end
+    logger.info "User Fee Amount ******#{user_fee_amount}"
     # TODO: Check to make sure the amount is valid here
     # Create the payment record in our db, if there are errors, redirect the user
     @payment = @campaign.payments.new(payment_params)
