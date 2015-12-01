@@ -17,12 +17,12 @@
     <% end %> -->
     <% if !@campaign.nil? %>
         <% if  !@campaign.tweet_text.blank? && !@settings.getHeaderUrl(@campaign.tweet_text, request.host).blank? %>
-            <a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" ><%= image_tag @settings.getHeaderUrl(@campaign.tweet_text, request.host), alt: "logo", :class => "logo_preview" %></a>
+            <a href="/web/<%= @campaign.facebook_title.downcase unless @campaign.nil? %>/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" ><%= image_tag @settings.getHeaderUrl(@campaign.tweet_text, request.host), alt: "logo", :class => "logo_preview" %></a>
         <% else %>
-            <a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" ><%= image_tag "cysticlife_logo.png", alt: "logo", :class => "logo_preview" %></a>
+            <a href="/web/<%= @campaign.facebook_title.downcase unless @campaign.nil? %>/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" ><%= image_tag "cysticlife_logo.png", alt: "logo", :class => "logo_preview" %></a>
         <% end %>
     <% else %>
-        <a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" ><%= image_tag "cysticlife_logo.png", alt: "logo", :class => "logo_preview" %></a>
+        <a href="/web/<%= @campaign.facebook_title.downcase unless @campaign.nil? %>/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" ><%= image_tag "cysticlife_logo.png", alt: "logo", :class => "logo_preview" %></a>
     <% end %>
     
     <% if !@settings.header_link_text.blank? && !@settings.header_link_url.blank? %>

@@ -29,7 +29,7 @@
   <div class="container content_box clearfix">
     <div class="main_content">
       <!-- <h3><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h3> -->
-      <h3><a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>"><%= @campaign.name %></a></h3>
+      <h3><a href="/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>"><%= @campaign.name %></a></h3>
     <div class="checkout_block" style="padding-bottom: 16px">
 
         <form accept-charset="UTF-8" action="<%= checkout_process_path(@campaign) %>" method="post" id="payment_form" data-error-action="<%= checkout_error_path(@campaign) %>" data-user-create-action="<%= ajax_create_payment_user_path(@campaign) %>">

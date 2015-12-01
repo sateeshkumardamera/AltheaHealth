@@ -23,7 +23,7 @@
 <div id="checkout">
   <div class="container content_box clearfix">
     <div class="main_content">
-      <h3><a href="/web/cysticlife/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>"><%= @campaign.name %></a></h3>
+      <h3><a href="/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>"><%= @campaign.name %></a></h3>
 
       <!-- <h3><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h3> -->
 
