@@ -1,7 +1,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
     <head>
     	<!-- Facebook Pixel Code -->
+        <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js"></script>
 	<script>
 		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 		n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -72,12 +73,30 @@
     <div class="cl_share">
       <div><label style="text-align: center; font-size: 16px; color: #6b6b6b">Help us spread the word</label></div>
       <div class="share_content">
-      <div class="share_fb"><a target="_blank" href="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sr=<%= params[:sr]%>&sa=fb&utm_medium=FB_CDP"><%= image_tag "fb.png", alt: "facebook" %></a></div>
-      <div class="share_twitter"><a target="_blank" href="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sr=<%= params[:sr]%>&sa=tw&utm_medium=TW_CDP"><%= image_tag "twitter.png", alt: "twitter" %></a></div>
-      <div class="share_lin"><a target="_blank" href="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sr=<%= params[:sr]%>&sa=li&utm_medium=LI_CDP"><%= image_tag "lin.png", alt: "linkedin" %></a></div>
-      <div class="share_pin"><a target="_blank" href="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sr=<%= params[:sr]%>&sa=pi&utm_medium=PI_CDP"><%= image_tag "pin.png", alt: "pintrest" %></a></div>      
+            <div class="rs-iconbox-01"><a class="addthis_button_facebook" href="javascript:void(0);" onclick="javascript:void(0);"
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=FB"
+								addthis:title="<%=ENV[@campaign.facebook_title.downcase+"_title"]%>"
+								addthis:description="<%=ENV[''+@campaign.facebook_title.downcase+"_fb_desc"]%>">
+            </a></div>
+            <div class="rs-iconbox-01"><a class="addthis_button_twitter" href="javascript:void(0);"
+								onclick="javascript:void(0);"
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=TW"
+								addthis:title="<%=ENV[@campaign.facebook_title.downcase+"_twitter_title"]%>">
+							</a></div>
+            <div class="rs-iconbox-01"><a class="addthis_button_linkedin" href="javascript:void(0);"
+								onclick="javascript:void(0);"
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=LN"
+								addthis:title="<%=ENV[@campaign.facebook_title.downcase+"_title"]%>"
+								addthis:description="<%=ENV[@campaign.facebook_title.downcase+"_linkedin_desc"]%>">
+							</a></div>
+            <div class="rs-iconbox-01"><a class="addthis_button_pinterest_pinit" 
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=PT"
+								pi:pinit:media="<%=ENV[@campaign.facebook_title.downcase+"_image"]%>"
+								pi:pinit:layout="horizontal"  
+								pi:pinit:description="<%=ENV[@campaign.facebook_title.downcase+"_pin_desc"]%>">
+							</a></div>
       </div>
-      <div style="font-size: 18px; padding-left: 20%; margin-left: auto; margin-right: auto; margin-top: 100px;"><a style="color: #ff7000 !important;" href="/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" >Back to Campaign Page</a></div>
+      <div style="font-size: 18px; padding-left: 20%; margin-left: auto; margin-right: auto; margin-top: 120px;"><a style="color: #ff7000 !important;" href="/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" >Back to Campaign Page</a></div>
     </div>
     
     
@@ -90,10 +109,28 @@
         <div class="cl_share_model">
           <div><label style="text-align: center; font-size: 16px; color: #6b6b6b">Help us spread the word about our campaign</label></div>
           <div class="share_content">
-            <div class="share_fb"><a target="_blank" href="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sr=<%= params[:sr]%>&sa=fb&utm_medium=FB_CDP"><%= image_tag "fb.png", alt: "facebook" %></a></div>
-            <div class="share_twitter"><a target="_blank" href="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sr=<%= params[:sr]%>&sa=tw&utm_medium=TW_CDP"><%= image_tag "twitter.png", alt: "twitter" %></a></div>
-            <div class="share_lin"><a target="_blank" href="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sr=<%= params[:sr]%>&sa=li&utm_medium=LI_CDP"><%= image_tag "lin.png", alt: "linkedin" %></a></div>
-            <div class="share_pin"><a target="_blank" href="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') %>&sr=<%= params[:sr]%>&sa=pi&utm_medium=PI_CDP"><%= image_tag "pin.png", alt: "pintrest" %></a></div>      
+            <div class="rs-iconbox-01"><a class="addthis_button_facebook" href="javascript:void(0);" onclick="javascript:void(0);"
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=FB"
+								addthis:title="<%=ENV[@campaign.facebook_title.downcase+"_title"]%>"
+								addthis:description="<%=ENV[''+@campaign.facebook_title.downcase+"_fb_desc"]%>">
+            </a></div>
+            <div class="rs-iconbox-01"><a class="addthis_button_twitter" href="javascript:void(0);"
+								onclick="javascript:void(0);"
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=TW"
+								addthis:title="<%=ENV[@campaign.facebook_title.downcase+"_twitter_title"]%>">
+							</a></div>
+            <div class="rs-iconbox-01"><a class="addthis_button_linkedin" href="javascript:void(0);"
+								onclick="javascript:void(0);"
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=LI"
+								addthis:title="<%=ENV[@campaign.facebook_title.downcase+"_title"]%>"
+								addthis:description="<%=ENV[@campaign.facebook_title.downcase+"_linkedin_desc"]%>">
+							</a></div>
+            <div class="rs-iconbox-01"><a class="addthis_button_pinterest_pinit" 
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=PT"
+								pi:pinit:media="<%=ENV[@campaign.facebook_title.downcase+"_image"]%>"
+								pi:pinit:layout="horizontal"  
+								pi:pinit:description="<%=ENV[@campaign.facebook_title.downcase+"_pin_desc"]%>">
+							</a></div>
           </div>
         </div>
       </div>
