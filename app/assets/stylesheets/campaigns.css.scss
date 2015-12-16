@@ -435,9 +435,9 @@
    // -webkit-box-shadow: inset 0px 1px 1px 0px #acacac;
    // box-shadow: inset 0px 1px 1px 0px #acacac;
     .rs-iconbox-01{float:left; width: 60px;}
-    .addthis_button_twitter {background:url('twitter_share.png') no-repeat; display: block;	height: 50px;}
-    .addthis_button_linkedin {background: url('lin_share.png') no-repeat; display: block; height: 50px;}
-    .addthis_button_facebook{background: url('fb_share.png') no-repeat !important; display: block !important; height: 50px !important;}
+    .addthis_button_twitter {background:url('twitter_share.png') no-repeat; display: block;	height: 50px; .at4-icon.aticon-twitter{display: none !important;}}
+    .addthis_button_linkedin {background: url('lin_share.png') no-repeat; display: block; height: 50px;.at4-icon.aticon-linkedin{display: none !important;}}
+    .addthis_button_facebook{background: url('fb_share.png') no-repeat !important; display: block !important; height: 50px !important;.at4-icon.aticon-facebook{display: none !important;}}
     
     .share_content{
       padding-left: 15%;
@@ -483,9 +483,9 @@
    // box-shadow: inset 0px 1px 1px 0px #acacac;
     .rs-iconbox-01{float:left; width: 60px;}
 
-    .addthis_button_twitter {background:url('twitter_share.png') no-repeat; display: block;	height: 50px;}
-    .addthis_button_linkedin {background: url('lin_share.png') no-repeat; display: block; height: 50px;}
-    .addthis_button_facebook{background: url('fb_share.png') no-repeat !important; display: block !important; height: 50px !important;}
+    .addthis_button_twitter {background:url('twitter_share.png') no-repeat; display: block;	height: 50px; .at4-icon.aticon-twitter{display: none !important;}}
+    .addthis_button_linkedin {background: url('lin_share.png') no-repeat; display: block; height: 50px;.at4-icon.aticon-linkedin{display: none !important;}}
+    .addthis_button_facebook{background: url('fb_share.png') no-repeat !important; display: block !important; height: 50px !important;.at4-icon.aticon-facebook{display: none !important;}}
     
     .share_content{
       padding-left: 15%;
