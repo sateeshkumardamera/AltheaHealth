@@ -209,7 +209,7 @@ class CampaignsController < ApplicationController
       logger.info "Got the response Json #{ravi_str}"
 
     rescue Stripe::CardError => e
-      if ravi_str == ''
+      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
         ravi_str = "CardError"
       end
       
@@ -222,7 +222,7 @@ class CampaignsController < ApplicationController
       logger.info "::1"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. " } and return
     rescue Stripe::InvalidRequestError => e
-      if ravi_str == ''
+      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
         ravi_str = "InvalidRequestError"
       end
       @payment.setError(ravi_str)
@@ -234,7 +234,7 @@ class CampaignsController < ApplicationController
       logger.info "::2"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later. " } and return
     rescue Stripe::AuthenticationError => e
-      if ravi_str == ''
+      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
         ravi_str = "AuthenticationError"
       end
       @payment.setError(ravi_str)
@@ -246,7 +246,7 @@ class CampaignsController < ApplicationController
       logger.info "::3"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later. " } and return
     rescue Stripe::APIConnectionError => e
-      if ravi_str == ''
+      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
         ravi_str = "APIConnectionError"
       end
       @payment.setError(ravi_str)
@@ -258,7 +258,7 @@ class CampaignsController < ApplicationController
       logger.info "::4"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later. " } and return
     rescue Stripe::StripeError => e
-      if ravi_str == ''
+      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
         ravi_str = "StripeError"
       end
       @payment.setError(ravi_str)
@@ -270,7 +270,7 @@ class CampaignsController < ApplicationController
       logger.info "::5"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later." } and return
     rescue StandardError => e
-      if ravi_str == ''
+      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
         ravi_str = "StandardError"
       end
       @payment.setError(ravi_str)
@@ -282,7 +282,7 @@ class CampaignsController < ApplicationController
       logger.info "::6"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later." } and return
     rescue => e
-      if ravi_str == ''
+      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
         ravi_str = "OtherError"
       end
       @payment.setError(ravi_str)
