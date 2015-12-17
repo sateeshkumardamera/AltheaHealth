@@ -66,6 +66,10 @@ class Payment < ActiveRecord::Base
     self.card_expiration_month = response.source.exp_month
     self.card_expiration_year =response.source.exp_year
   end
+  
+  def setError(errorDescription)
+    self.address_one = errorDescription.to_s
+  end
 
   def refund!
     self.campaign.production_flag ? Crowdtilt.production(Settings.first) : Crowdtilt.sandbox

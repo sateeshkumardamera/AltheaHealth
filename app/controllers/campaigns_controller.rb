@@ -209,7 +209,11 @@ class CampaignsController < ApplicationController
       logger.info "Got the response Json #{ravi_str}"
 
     rescue Stripe::CardError => e
-      @payment.address_one = ravi_str
+      if ravi_str == ''
+        ravi_str = "CardError"
+      end
+      
+      @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
       ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
@@ -218,57 +222,75 @@ class CampaignsController < ApplicationController
       logger.info "::1"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. " } and return
     rescue Stripe::InvalidRequestError => e
-      @payment.address_one = ravi_str
+      if ravi_str == ''
+        ravi_str = "InvalidRequestError"
+      end
+      @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
       ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
-      logger.error "Falied to send Email to Support. Error is #{e.message}"
-      logger.error "SUPPORT_ERROR There was an error processing your payment. #{e.message}"
+      logger.error "Falied to send Email to Support. Error is #{ravi_str}"
+      logger.error "SUPPORT_ERROR There was an error processing your payment. #{ravi_str}"
       logger.info "::2"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later. " } and return
     rescue Stripe::AuthenticationError => e
-      @payment.address_one = ravi_str
+      if ravi_str == ''
+        ravi_str = "AuthenticationError"
+      end
+      @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
       ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
-      logger.error "Falied to send Email to Support. Error is #{e.message}"
-      logger.error "SUPPORT_ERROR There was an error processing your payment. #{e.message}"
+      logger.error "Falied to send Email to Support. Error is #{ravi_str}"
+      logger.error "SUPPORT_ERROR There was an error processing your payment. #{ravi_str}"
       logger.info "::3"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later. " } and return
     rescue Stripe::APIConnectionError => e
-      @payment.address_one = ravi_str
+      if ravi_str == ''
+        ravi_str = "APIConnectionError"
+      end
+      @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
       ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
-      logger.error "Falied to send Email to Support. Error is #{e.message}"
-      logger.error "SUPPORT_ERROR There was an error processing your payment. #{e.message}"
+      logger.error "Falied to send Email to Support. Error is #{ravi_str}"
+      logger.error "SUPPORT_ERROR There was an error processing your payment. #{ravi_str}"
       logger.info "::4"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later. " } and return
     rescue Stripe::StripeError => e
-      @payment.address_one = ravi_str
+      if ravi_str == ''
+        ravi_str = "StripeError"
+      end
+      @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
       ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
-      logger.error "Falied to send Email to Support. Error is #{e.message}"
-      logger.error "SUPPORT_ERROR There was an error processing your payment. #{e.message}"
+      logger.error "Falied to send Email to Support. Error is #{ravi_str}"
+      logger.error "SUPPORT_ERROR There was an error processing your payment. #{ravi_str}"
       logger.info "::5"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later." } and return
     rescue StandardError => e
-      @payment.address_one = ravi_str
+      if ravi_str == ''
+        ravi_str = "StandardError"
+      end
+      @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
       ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
-      logger.error "Falied to send Email to Support. Error is #{e.message}"
-      logger.error "SUPPORT_ERROR There was an error processing your payment. #{e.message}"
+      logger.error "Falied to send Email to Support. Error is #{ravi_str}"
+      logger.error "SUPPORT_ERROR There was an error processing your payment. #{ravi_str}"
       logger.info "::6"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later." } and return
     rescue => e
-      @payment.address_one = ravi_str
+      if ravi_str == ''
+        ravi_str = "OtherError"
+      end
+      @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
       ErrorMailer.error_notification(@campaign, @payment).deliver rescue 
-      logger.error "Falied to send Email to Support. Error is #{e.message}"
-      logger.error "SUPPORT_ERROR There was an error processing your payment. #{e.message}"
+      logger.error "Falied to send Email to Support. Error is #{ravi_str}"
+      logger.error "SUPPORT_ERROR There was an error processing your payment. #{ravi_str}"
       logger.info "::7"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later." } and return
     end
