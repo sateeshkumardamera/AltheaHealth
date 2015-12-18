@@ -209,10 +209,7 @@ class CampaignsController < ApplicationController
       logger.info "Got the response Json #{ravi_str}"
 
     rescue Stripe::CardError => e
-      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
-        ravi_str = "CardError"
-      end
-      
+      ravi_str = response.to_s+e.message+": CardError"
       @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
@@ -222,9 +219,7 @@ class CampaignsController < ApplicationController
       logger.info "::1"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. " } and return
     rescue Stripe::InvalidRequestError => e
-      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
-        ravi_str = "InvalidRequestError"
-      end
+      ravi_str = response.to_s+e.message+": InvalidRequestError"
       @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
@@ -234,9 +229,7 @@ class CampaignsController < ApplicationController
       logger.info "::2"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later. " } and return
     rescue Stripe::AuthenticationError => e
-      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
-        ravi_str = "AuthenticationError"
-      end
+      ravi_str = response.to_s+e.message+": AuthenticationError"
       @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
@@ -246,9 +239,7 @@ class CampaignsController < ApplicationController
       logger.info "::3"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later. " } and return
     rescue Stripe::APIConnectionError => e
-      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
-        ravi_str = "APIConnectionError"
-      end
+      ravi_str = response.to_s+e.message+": APIConnectionError"
       @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
@@ -258,9 +249,7 @@ class CampaignsController < ApplicationController
       logger.info "::4"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later. " } and return
     rescue Stripe::StripeError => e
-      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
-        ravi_str = "StripeError"
-      end
+      ravi_str = response.to_s+e.message+": StripeError"
       @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
@@ -270,9 +259,7 @@ class CampaignsController < ApplicationController
       logger.info "::5"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later." } and return
     rescue StandardError => e
-      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
-        ravi_str = "StandardError"
-      end
+      ravi_str = response.to_s+e.message+": StandardError"
       @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
@@ -282,9 +269,7 @@ class CampaignsController < ApplicationController
       logger.info "::6"
       redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an unexpected error processing your payment. Support has been notified. Please try again later." } and return
     rescue => e
-      if ravi_str.nil? || ravi_str == 'null' || ravi_str == ''
-        ravi_str = "OtherError"
-      end
+      ravi_str = response.to_s+e.message
       @payment.setError(ravi_str)
       logger.error "Sending Payment Object #{payment}"
       logger.error "Got the response Json #{ravi_str}"
