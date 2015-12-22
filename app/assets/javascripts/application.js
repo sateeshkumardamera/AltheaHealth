@@ -30,3 +30,4 @@
 //= require event_tracking
 //= require unsaved_changes.js
 //= require moment
+//= require addthis_widget
