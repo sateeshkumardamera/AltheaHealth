@@ -12,7 +12,7 @@
 
 		fbq('init', '<%= @campaign.video_embed_id %>');
 		fbq('track', "PageView");
-		fbq('track', "Purchase", {currency: 'USD', value: <%= short_price(@payment.amount.to_f/100.0 + @payment.user_fee_amount.to_f/100.0, '$', 2) %>, order_id: <%= @payment.ct_payment_id %>});
+		fbq('track', "Purchase", {currency: 'USD', value: <%= short_price(@payment.amount.to_f/100.0 + @payment.user_fee_amount.to_f/100.0, '', 2) %>, order_id: '<%= @payment.ct_payment_id %>'});
 	</script>
 	<noscript>
 		<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=<%= @campaign.video_embed_id %>&ev=PageView&noscript=1"/>
