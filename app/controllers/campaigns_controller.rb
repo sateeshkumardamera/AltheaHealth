@@ -217,7 +217,8 @@ class CampaignsController < ApplicationController
       logger.error "Falied to send Email to Support. Error is #{ravi_str}"
       logger.error "SUPPORT_ERROR There was an error processing your payment. #{ravi_str}"
       logger.info "::1"
-      redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. " } and return
+      #redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. " } and return
+      redirect_to checkout_payment_url(@campaign, :sr => params[:sr], :amount => payment_params[:amount], :quantity => payment_params[:quantity]), flash: { error: "#{ravi_str}" } and return
     rescue Stripe::InvalidRequestError => e
       ravi_str = response.to_s+e.message+": InvalidRequestError"
       @payment.setError(ravi_str)
