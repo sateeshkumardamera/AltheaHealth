@@ -100,7 +100,8 @@ class CampaignsController < ApplicationController
     ct_user_id = params[:ct_user_id]
     ct_card_id = params[:ct_card_id]
     sr = params[:sr]
-
+    logger.error "checkout_process payment PARAMS. #{payment_params}"
+    logger.error "checkout_process payment PARAMS. #{params}"
     # calculate amount and fee in cents
     #fee = calculate_processing_fee(payment_params[:amount])
     fee = payment_params[:amount]
@@ -218,7 +219,7 @@ class CampaignsController < ApplicationController
       logger.error "SUPPORT_ERROR There was an error processing your payment. #{ravi_str}"
       logger.info "::1"
       #redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { error: "There was an error processing your payment. " } and return
-      redirect_to checkout_payment_url(@campaign, :sr => params[:sr], :amount => payment_params[:amount], :quantity => payment_params[:quantity]), flash: { error: "#{ravi_str}" } and return
+      redirect_to checkout_payment_url(@campaign, :sr => params[:sr], :amount => (payment_params[:amount]/100), :quantity => (payment_params[:amount]/100), :fullname => URI::encode(payment_params[:fullname]), :email => URI::encode(payment_params[:email]), :billing_postal_code => URI::encode(payment_params[:billing_postal_code])), flash: { error: "#{ravi_str}" } and return
     rescue Stripe::InvalidRequestError => e
       ravi_str = response.to_s+e.message+": InvalidRequestError"
       @payment.setError(ravi_str)
