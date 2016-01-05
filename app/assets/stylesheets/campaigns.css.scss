@@ -554,6 +554,9 @@
 /* Mobile phones and Smart phones */ 
 @media only screen and (min-width: 320px) and (max-width: 480px)
 {
+  #checkout .main_content{
+    width: 100% !important;
+  }
   #fullname, #email, #address_one, #address_two, #additional_info{
     width: 100% !important;
   }
@@ -562,7 +565,7 @@
     min-width: 190px !important
   }
   #security_code{
-    width: 85% !important;
+    width: 80% !important;
     min-width: 100px !important;
   }
   #billing_postal_code{
@@ -575,7 +578,7 @@
   .secure_logo{
     display: block !important;
    text-align: right;
-   margin-right: 0px 
+   margin-right: 0px; 
   }
   .checkout_block {
       width: 82% !important;
@@ -643,6 +646,9 @@
 }
 @media only screen and (min-width: 481px) and (max-width: 640px)
 {
+  #checkout .main_content{
+    width: 100% !important;
+  }
    #security_code{
     width: 85% !important;
     min-width: 100px !important;
