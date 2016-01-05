@@ -649,6 +649,12 @@
   #checkout .main_content{
     width: 100% !important;
   }
+   .checkout_bottombar{
+    display: block !important;
+  }
+  .checkout_sidebar{
+    display: none !important;
+  }
    #security_code{
     width: 85% !important;
     min-width: 100px !important;
@@ -687,6 +693,10 @@
 }
 @media only screen and (min-width: 641px) and (max-width: 799px)
 {
+  #security_code{
+    width: 85% !important;
+    min-width: 100px !important;
+  }
   .payment_text {
     width: 49% !important;
     min-width: 20%;
