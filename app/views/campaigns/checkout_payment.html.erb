@@ -40,7 +40,8 @@
           <fieldset>
           <input id="fullname" value="<%= URI::decode(params[:fullname]) if params[:fullname].present? %>" placeholder="Full Name" name="fullname" type="text" class="paymentconfirm_text inspectletIgnore">
           <label><input id="anonymous" name="anonymous" type="checkbox" style="margin-bottom: 7px;" >  Make Anonymous (name not displayed on campaign page)</label>
-          <input id="email" value="<%= URI::decode(params[:email]) if params[:email].present?%>" placeholder="Email Address" name="email" type="text" class="paymentconfirm_text inspectletIgnore">
+          <!-- <input id="email" value="<%= URI::decode(params[:email]) if params[:email].present?%>" placeholder="Email Address" name="email" type="text" class="paymentconfirm_text inspectletIgnore"> -->
+	  	  <input id="email" value="<%= URI::decode(params[:email]) if params[:email].present?%>" placeholder="Email Address" name="email" type="text" class="paymentconfirm_text">
           <!-- Added for anonymous payments -->
           <input id="additional_info" name="additional_info" type="hidden"></textarea>
 
