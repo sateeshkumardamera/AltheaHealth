@@ -347,7 +347,7 @@ $( document ).ready(function() {
       country: { required: true },
       card_number: { required: true, minlength: 12, creditcard: true},
       security_code: { required: true, number: true, minlength: 3, maxlength: 4 },
-      billing_postal_code: { required: true, minlength: 3, maxlength: 10 }
+     // billing_postal_code: { required: true, minlength: 3, maxlength: 10 }
     },
     // validation messages
     messages: {
