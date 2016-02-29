@@ -335,9 +335,6 @@ $( document ).ready(function() {
     // custom handler to call named function "do_payment"
     submitHandler: function(form) {
       window.onbeforeunload = unPopIt;
-      var str  = $('#email').val();
-      str = str.replace(" ", "");
-      $('#email').attr('value', str);
       setStripeToken(form);
     },
 

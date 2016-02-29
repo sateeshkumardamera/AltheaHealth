@@ -332,7 +332,7 @@ class CampaignsController < ApplicationController
       
     puts case params[:choice]
       when "101"
-        @campaign.setFeedback("Lack of payment choice (did you know a minimum $10 payment can be made using the 'Other' choice)")
+        @campaign.setFeedback("Lack of payment choice (did you know a minimum $10 payment to enter sweep stakes can be made using the 'Other' choice)")
       when "102"
         @campaign.setFeedback("The sweepstake offers are unattractive")
       when "103"
@@ -344,7 +344,7 @@ class CampaignsController < ApplicationController
       logger.error "Triggering Feedback Email #{params}"
       FeedbackMailer.feedback_notification(@campaign).deliver rescue 
       logger.error "Falied to send Email to Support."
-      redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { info: "Thannk you for submitting your feedback. !!" } and return
+      redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { info: "Thank you for submitting your feedback." } and return
 
   end
 
