@@ -37,8 +37,8 @@ Crowdhoster::Application.routes.draw do
   match '/:id/checkout/confirmation',          to: 'campaigns#checkout_confirmation',       as: :checkout_confirmation
   post '/:id/checkout/error',                  to: 'campaigns#checkout_error',              as: :checkout_error
   match '/:id',                                to: 'campaigns#home',                        as: :campaign_home
-  match '/:id/ajax/create_payment_user',        to: 'campaigns#ajax_create_payment_user',    as: :ajax_create_payment_user
-
+  match '/:id/ajax/create_payment_user',       to: 'campaigns#ajax_create_payment_user',    as: :ajax_create_payment_user
+  match '/:id/send_feedback',                to: 'campaigns#send_feedback',               as: :send_feedback
 
   namespace :api, defaults: {format: 'json'} do
     scope module: :v0  do
