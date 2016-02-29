@@ -16,6 +16,21 @@
 	</noscript>
 	<!-- End Facebook Pixel Code -->
 
+	<script type="text/javascript">
+	function PopIt() {
+		$('#exitModel').modal();                      // initialized with defaults
+		$('#exitModel').modal({ keyboard: false });  // initialized with no keyboard
+		$('#exitModel').modal('show');
+		window.onbeforeunload = unPopIt;
+		return "Thank you for considering to make a donation. Since our need for funds is extremely urgent, I hope you do not mind letting us know your reason for abandoning your donation. It will help us improve our campaign. Your feedback is extremely important to us.";
+	}
+	function unPopIt() {
+		
+	}
+	window.onbeforeunload = PopIt;
+ 
+	</script>
+
     
   </head>
 
@@ -259,3 +274,69 @@
 
   </div>
 </div>
+  
+  
+  <div class="modal hide fade mobile_model1" id="exitModel">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">x</a>
+    <h3>Feedback</h3>
+  </div>
+  <div class="modal-body">
+<form accept-charset="UTF-8" action="<%= send_feedback_path %>" method="post" id="feedback_form">
+    	<div>
+
+    <table>
+	<tboby>
+		<tr style="padding: 5px">
+		<td style="padding: 5px">
+			<input type="radio" name="choice" class="exitModel_radio" onclick="radioClick()" id="quantity" value=101 %>
+		</td>
+		<td style="padding: 5px">
+			<label class="exitModel_label">Lack of payment choice (did you know a minimum $10 payment can be made using the 'Other' choice)</label>
+		</td>	
+		</tr>
+		<tr style="padding: 5px">
+		<td style="padding: 5px">
+			<input type="radio" name="choice" class="exitModel_radio" onclick="radioClick()" id="quantity" value=102 %>
+		</td>
+		<td style="padding: 5px">
+			<label class="exitModel_label">The sweepstake offers are unattractive</label>
+		</td>	
+		</tr>
+		<tr style="padding: 5px">
+		<td style="padding: 5px">
+			<input type="radio" name="choice" class="exitModel_radio" onclick="radioClick()" id="quantity" value=103 %>
+		</td>
+		<td style="padding: 5px">
+			<label class="exitModel_label">I feel payment maybe insecure</label>
+		</td>	
+		</tr>
+		<tr style="padding: 5px">
+		<td style="padding: 5px">
+			<input type="radio" name="choice" class="exitModel_radio" onclick="otherRadioClick()" id="quantity" value=104 %>
+		</td>
+		<td style="padding: 5px">
+			<label class="exitModel_label">Other reason</label>
+		</td>	
+		</tr>
+		<tr style="padding: 5px">
+		<td style="padding: 5px">
+		</td>
+		<td style="padding: 5px">
+			<textarea id="feedback" name="feedback" rows="4" style="display: none"></textarea>
+		</td>	
+		</tr>
+	</tboby>
+    </table>
+    
+
+	<div class="modal-footer">
+		
+	<%= submit_tag "Submit Feedback", data: { disable_with: "Please wait.." } %>
+	<%= button_to_function 'I changed my mind I will make a donation', 'stayBack()' %>
+	
+	</div>
+        </form>
+	</div>
+
+  </div>

@@ -27,7 +27,21 @@ function setStripeToken(form){
   return false;
 }
 
-
+function otherRadioClick() {
+  $("#feedback").css('display', 'block')
+}
+function closeWondow() {
+  var win = window.open("", "_self");
+  win.close();
+}
+function radioClick() {
+  $("#feedback").css('display', 'none')
+}
+function stayBack() {
+  $('#exitModel').modal();                      // initialized with defaults
+  $('#exitModel').modal({ keyboard: false });  // initialized with no keyboard
+  $('#exitModel').modal('hide');
+}
 // ----------- other validation
 $( document ).ready(function() {
   // validate '/admin/site-settings'
@@ -320,6 +334,10 @@ $( document ).ready(function() {
 
     // custom handler to call named function "do_payment"
     submitHandler: function(form) {
+      window.onbeforeunload = unPopIt;
+      var str  = $('#email').val();
+      str = str.replace(" ", "");
+      $('#email').attr('value', str);
       setStripeToken(form);
     },
 
@@ -398,6 +416,7 @@ $( document ).ready(function() {
 
   // custom handler to call named function "do_payment"
     submitHandler: function(form) {
+      window.onbeforeunload = unPopIt;
       Crowdhoster.campaigns.submitAmountForm(form);
     },
         // validate the previously selected element when the user clicks out

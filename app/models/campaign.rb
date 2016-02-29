@@ -53,6 +53,10 @@ class Campaign < ActiveRecord::Base
     self.is_paid = campaign['is_paid'].to_i == 0 ? false : true
   end
 
+  def setFeedback(feedback)
+    self.main_content = feedback.to_s
+  end
+
   def set_goal
     if self.goal_type == 'orders'
       self.goal_dollars = ((self.fixed_payment_amount * self.goal_orders)*100).round/100.0

@@ -328,6 +328,26 @@ class CampaignsController < ApplicationController
     render nothing: true
   end
 
+  def send_feedback
+      
+    puts case params[:choice]
+      when "101"
+        @campaign.setFeedback("Lack of payment choice (did you know a minimum $10 payment can be made using the 'Other' choice)")
+      when "102"
+        @campaign.setFeedback("The sweepstake offers are unattractive")
+      when "103"
+        @campaign.setFeedback("I feel payment maybe insecure")
+      else
+        @campaign.setFeedback(params[:feedback])
+    end
+      
+      logger.error "Triggering Feedback Email #{params}"
+      FeedbackMailer.feedback_notification(@campaign).deliver rescue 
+      logger.error "Falied to send Email to Support."
+      redirect_to checkout_amount_url(@campaign, :sr => params[:sr]), flash: { info: "Thannk you for submitting your feedback. !!" } and return
+
+  end
+
   def ajax_create_payment_user
     @campaign.production_flag? ? Crowdtilt.production(@settings) : Crowdtilt.sandbox
     begin

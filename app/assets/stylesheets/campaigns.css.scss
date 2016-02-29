@@ -550,6 +550,14 @@
   
 }
 
+  .exitModel_label {
+        font-size: 14px;
+        display: inline!important;
+        vertical-align:middle;
+  }
+  .exitModel_radio {
+    margin-top: 0px!important;
+  }
 
 /****************************/
 /* Mobile phones and Smart phones */ 
@@ -629,6 +637,11 @@
    // margin-top: -60%;
     margin-left: -47%;
   }
+  .mobile_model1{
+    width: 93% !important;
+    margin-left: -47% !important;
+    //margin-top: -20%;
+  }
   
 }
 @media only screen and (max-height: 480px)
@@ -687,6 +700,11 @@
     height: 320px;
   }*/
   .mobile_model{
+    width: 80% !important;
+    margin-left: -40% !important;
+    //margin-top: -20%;
+  }
+  .mobile_model1{
     width: 80% !important;
     margin-left: -40% !important;
     //margin-top: -20%;
