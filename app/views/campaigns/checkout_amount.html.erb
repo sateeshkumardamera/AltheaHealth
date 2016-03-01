@@ -24,7 +24,7 @@
 		$('#exitModel').modal({ keyboard: false });  // initialized with no keyboard
 		$('#exitModel').modal('show');
 		window.onbeforeunload = unPopIt;
-		return "If you do not mind before you leave can you please tell us why you decided not to donate? Your feedback is important since our need is extremely urgent. Did you know that you could make a minimum $10 donation to participate in sweep stakes?";
+		return "If you do not mind before you leave can you please tell us why you decided not to donate? Your feedback is important since our need is extremely urgent. Did you know that you could make a minimum $10 donation to participate in sweep stakes? . Click 'Stay on page' to proceed";
 	}
 	function unPopIt() {
 		
@@ -189,7 +189,7 @@
   <div class="modal-body">
 <form accept-charset="UTF-8" action="<%= send_feedback_path %>" method="post" id="feedback_form">
     	<div>
-
+<div id="feedback_error" style="color: rgb(255,0,0)"></div>
     <table>
 	<tboby>
 		<tr style="padding: 5px">
@@ -236,8 +236,8 @@
     
 
 	<div class="modal-footer">
-	<button type="submit" class="btn popup_submit show_loader" data-loader="feedback_form" id="submit-feed-back">Submit Feedback</button>
 	<button type="button" class="btn popup_submit" id="close-popup" onclick="stayBack()">I changed my mind I will make a donation</button>
+	<button type="submit" class="btn popup_submit show_loader" data-loader="feedback_form" id="submit-feed-back">Submit Feedback</button>
 	<!-- <%= submit_tag "Submit Feedback", data: { disable_with: "Please wait.." } %>-->
 	<!-- <%= button_to_function 'I changed my mind I will make a donation', 'stayBack()' %>-->
 	<!-- <%= button_to_function 'No thanks, please close page', 'closeWondow()' %> -->

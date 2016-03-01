@@ -28,18 +28,23 @@ function setStripeToken(form){
 }
 
 function otherRadioClick() {
+  $feedbackerr = $('#feedback_error')
+  $feedbackerr.html('')
   $("#feedback").css('display', 'block')
-    $("#feedback").attr('value', '')
+  $("#feedback").text('')
 }
 function closeWondow() {
   var win = window.open("", "_self");
   win.close();
 }
 function radioClick() {
+  $feedbackerr = $('#feedback_error')
+  $feedbackerr.html('')
   $("#feedback").css('display', 'none')
-  $("#feedback").attr('value', 'Selected Normal')
+  $("#feedback").text('Selected Normal')
 }
 function stayBack() {
+  window.onbeforeunload = unPopIt;
   $('#exitModel').modal();                      // initialized with defaults
   $('#exitModel').modal({ keyboard: false });  // initialized with no keyboard
   $('#exitModel').modal('hide');
@@ -453,7 +458,14 @@ $( document ).ready(function() {
   // custom handler to call named function "do_payment"
     submitHandler: function(form) {
       window.onbeforeunload = unPopIt;
-      form.submit();
+      $feedback = $('#feedback')
+      if ($feedback.val().length == 0) {
+        $feedbackerr = $('#feedback_error')
+        $feedbackerr.html('Please select your feedback')
+      }else{
+        form.submit();
+      }
+
     },
         // validate the previously selected element when the user clicks out
     onfocusout: function(element) {
@@ -463,7 +475,6 @@ $( document ).ready(function() {
     // hide the loader when form is not valid
     // add back in name attributes when form is not valid
     invalidHandler: function(event, validator) {
-      $(".loader").hide();
       $('#feedback').attr('name', 'feedback');
     },
 
@@ -474,7 +485,7 @@ $( document ).ready(function() {
     // validation messages
     messages: {
       feedback: {
-        required: "Please select your feedback.",
+        required: "Please enter your feedback.",
       }
     }
 
