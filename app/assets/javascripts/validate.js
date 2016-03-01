@@ -463,6 +463,7 @@ $( document ).ready(function() {
         $feedbackerr = $('#feedback_error')
         $feedbackerr.html('Please select your feedback')
       }else{
+        $('button[type="submit"]').attr('disabled', true).html('Please wait...')
         form.submit();
       }
 
