@@ -30,7 +30,7 @@ function setStripeToken(form){
 function otherRadioClick() {
   $feedbackerr = $('#feedback_error')
   $feedbackerr.html('')
-  $("#feedback").css('display', 'block')
+  $("#feedback, label[for=feedback]").css('display', 'block')
   $("#feedback").text('')
 }
 function closeWondow() {
@@ -40,7 +40,8 @@ function closeWondow() {
 function radioClick() {
   $feedbackerr = $('#feedback_error')
   $feedbackerr.html('')
-  $("#feedback").css('display', 'none')
+  $("#feedback, label[for=feedback]").css('display', 'none')
+  $('label[for=a], input#a').hide();
   $("#feedback").text('Selected Normal')
 }
 function stayBack() {
