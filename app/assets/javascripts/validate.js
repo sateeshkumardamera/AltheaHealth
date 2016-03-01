@@ -29,6 +29,7 @@ function setStripeToken(form){
 
 function otherRadioClick() {
   $("#feedback").css('display', 'block')
+    $("#feedback").attr('value', '')
 }
 function closeWondow() {
   var win = window.open("", "_self");
@@ -36,6 +37,7 @@ function closeWondow() {
 }
 function radioClick() {
   $("#feedback").css('display', 'none')
+  $("#feedback").attr('value', 'Selected Normal')
 }
 function stayBack() {
   $('#exitModel').modal();                      // initialized with defaults
@@ -444,4 +446,43 @@ $( document ).ready(function() {
 
   });
 
+  
+      // validate 'feedback_form'
+  $("#feedback_form").validate({
+
+  // custom handler to call named function "do_payment"
+    submitHandler: function(form) {
+      window.onbeforeunload = unPopIt;
+      form.submit();
+    },
+        // validate the previously selected element when the user clicks out
+    onfocusout: function(element) {
+      $(element).valid();
+    },
+
+    // hide the loader when form is not valid
+    // add back in name attributes when form is not valid
+    invalidHandler: function(event, validator) {
+      $(".loader").hide();
+      $('#feedback').attr('name', 'feedback');
+    },
+
+    // validation rules
+    rules: {
+      feedback: { required: true }
+    },
+    // validation messages
+    messages: {
+      feedback: {
+        required: "Please select your feedback.",
+      }
+    }
+
+  });
+
+  
+  
+  
+  
+  
 });

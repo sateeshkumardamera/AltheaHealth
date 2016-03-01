@@ -22,7 +22,7 @@
 		$('#exitModel').modal({ keyboard: false });  // initialized with no keyboard
 		$('#exitModel').modal('show');
 		window.onbeforeunload = unPopIt;
-		return "Thank you for considering to make a donation. Since our need for funds is extremely urgent, we hope you do not mind letting us know the reason for abandoning your donation. It will help us improve our campaign. Your feedback is extremely important to us.";
+		return "If you do not mind before you leave can you please tell us why you decided not to donate? Your feedback is important since our need is extremely urgent.";
 	}
 	function unPopIt() {
 		
@@ -323,9 +323,11 @@
     
 
 	<div class="modal-footer">
-		
-	<%= submit_tag "Submit Feedback", data: { disable_with: "Please wait.." } %>
-	<%= button_to_function 'I changed my mind I will make a donation', 'stayBack()' %>
+	
+	<button type="submit" class="btn popup_submit" id="submit-feed-back">Submit Feedback</button>
+	<button type="button" class="btn popup_submit" id="close-popup" onclick="stayBack()">I changed my mind I will make a donation</button>	
+	<!-- <div style="padding: 5px;"><%= submit_tag "Submit Feedback", data: { disable_with: "Please wait.." }  %> </div>
+	<div style="padding: 5px;"><%= button_to_function 'I changed my mind I will make a donation', 'stayBack()' %></div>
 	<!-- <%= button_to_function 'No thanks, please close page', 'closeWondow()' %> -->
 	</div>
         </form>

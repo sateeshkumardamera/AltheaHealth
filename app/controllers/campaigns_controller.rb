@@ -332,7 +332,7 @@ class CampaignsController < ApplicationController
       
     puts case params[:choice]
       when "101"
-        @campaign.setFeedback("Lack of payment choice (did you know a minimum $10 payment to enter sweep stakes can be made using the 'Other' choice)")
+        @campaign.setFeedback("I would like lower payment choices (less than $25)")
       when "102"
         @campaign.setFeedback("The sweepstake offers are unattractive")
       when "103"

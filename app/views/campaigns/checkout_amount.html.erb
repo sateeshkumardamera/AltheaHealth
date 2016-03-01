@@ -24,13 +24,21 @@
 		$('#exitModel').modal({ keyboard: false });  // initialized with no keyboard
 		$('#exitModel').modal('show');
 		window.onbeforeunload = unPopIt;
-		return "Thank you for considering to make a donation. Since our need for funds is extremely urgent, we hope you do not mind letting us know the reason for abandoning your donation. It will help us improve our campaign. Your feedback is extremely important to us.";
+		return "If you do not mind before you leave can you please tell us why you decided not to donate? Your feedback is important since our need is extremely urgent. Did you know that you could make a minimum $10 donation?";
 	}
 	function unPopIt() {
 		
 	}
 	window.onbeforeunload = PopIt;
  
+	<% if local_assigns[:admin].nil? %>
+	<% flash.to_hash().slice(:info).each do |key, value| %>
+	<% if !value.blank? %>
+		window.onbeforeunload = unPopIt;
+	<% end %>
+	<% end %>
+	<% end %>
+	
 </script>
     
   </head>
@@ -189,7 +197,7 @@
 			<input type="radio" name="choice" class="exitModel_radio" onclick="radioClick()" id="quantity" value=101 %>
 		</td>
 		<td style="padding: 5px">
-			<label class="exitModel_label">Lack of payment choice (did you know a minimum $10 donation to enter sweep stakes can be made using the 'Other' choice)</label>
+			<label class="exitModel_label">I would like lower payment choices (less than $25)</label>
 		</td>	
 		</tr>
 		<tr style="padding: 5px">
@@ -228,9 +236,10 @@
     
 
 	<div class="modal-footer">
-		
-	<%= submit_tag "Submit Feedback", data: { disable_with: "Please wait.." } %>
-	<%= button_to_function 'I changed my mind I will make a donation', 'stayBack()' %>
+	<button type="submit" class="btn popup_submit show_loader" data-loader="feedback_form" id="submit-feed-back">Submit Feedback</button>
+	<button type="button" class="btn popup_submit" id="close-popup" onclick="stayBack()">I changed my mind I will make a donation</button>
+	<!-- <%= submit_tag "Submit Feedback", data: { disable_with: "Please wait.." } %>-->
+	<!-- <%= button_to_function 'I changed my mind I will make a donation', 'stayBack()' %>-->
 	<!-- <%= button_to_function 'No thanks, please close page', 'closeWondow()' %> -->
 	</div>
         </form>
