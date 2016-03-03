@@ -29,7 +29,10 @@ module CheckoutMixin
         state: params.has_key?(:state) ? params[:state] : '',
         postal_code: params.has_key?(:postal_code) ? params[:postal_code] : '',
         country: params.has_key?(:country) ? params[:country] : '',
-        additional_info: params.has_key?(:additional_info) ? params[:additional_info] : ''
+        additional_info: params.has_key?(:additional_info) ? params[:additional_info] : '',
+        
+        address_one: params.has_key?(:donormemory) ? params[:donormemory] : ''
+
     }
 
     info[:amount] = (params[:amount].to_f*100).ceil if params[:amount]

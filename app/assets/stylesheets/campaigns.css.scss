@@ -415,6 +415,11 @@
     -webkit-box-shadow: inset 0px 1px 3px 0px #acacac;
     box-shadow: inset 0px 1px 3px 0px #acacac;
   }
+  .donor_payment_div {
+    width: 70%;
+    min-width: 205px;
+    height: 50px;
+  }
   .submit_div {
     width: 70%;
     min-width: 205px;
@@ -561,7 +566,9 @@
   .popup_submit{
     margin: 5px!important;
   }
-
+.donormemoryText{
+    width: 86%;
+  }
 /****************************/
 /* Mobile phones and Smart phones */ 
 @media only screen and (min-width: 320px) and (max-width: 480px)
@@ -645,6 +652,9 @@
     margin-left: -47% !important;
     //margin-top: -20%;
   }
+  .donormemoryText{
+    width: 80%;
+  }
   
 }
 @media only screen and (max-height: 480px)
@@ -712,6 +722,9 @@
     margin-left: -40% !important;
     //margin-top: -20%;
   }
+  .donormemoryText{
+    width: 80%;
+  }
 }
 @media only screen and (min-width: 641px) and (max-width: 799px)
 {
@@ -731,6 +744,9 @@
   .cl_share{
     margin-left: 0% !important;
   }
+  .donormemoryText{
+    width: 80%;
+  }
 }
   /****************************/
 /* Tablets portrait orientation */ 
@@ -749,6 +765,5 @@
     margin-left: 15px;
     width: 100% !important;
     display: none;*/
-  }
- 
+  } 
 }

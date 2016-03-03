@@ -90,6 +90,12 @@
                 <input id="amount_other" disabled=<%= @quantity == 4? '':'disabled' %>"  type="text" class="payment_text"  name="amount_other" />
               </div><br>
               
+	        <div class="donor_payment_div">
+		  <input id="donormemory" placeholder="Optionally you can dedicate this donation" name="donormemory" type="text" class="donormemoryText inspectletIgnore">
+                  <i class="icon icon-question-sign show_tooltip" data-placement="top" data-title="Optionally you can dedicate this donation in memory of a loved one"></i>
+                </div>
+
+	      
             </div>
 
             <input id="amount" type="hidden" name="amount" value="<%= number_with_precision(@campaign.fixed_payment_amount, precision: 2) %>" data-original="<%= number_with_precision(@campaign.fixed_payment_amount, precision: 2) %>"/>
@@ -144,7 +150,6 @@
             </ul>
             </div>
           <% end %>
-
 
           <div class="submit_div"><p class="submit_align" ><button type="submit" class="btn" id="continue_to_checkout">    Donate    </button>
           <!-- <%= link_to_function '<button type="button" class="btn">Back</button>'.html_safe , "history.back()" %> --> </p></div>
