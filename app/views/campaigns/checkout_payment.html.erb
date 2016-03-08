@@ -52,6 +52,7 @@
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
           <input id="sr" name="sr" type="hidden" value="<%= params[:sr] %>">
 	  <input id="donormemory" name="donormemory" type="hidden" value="<%= params[:donormemory] %>">
+	  <input id="memory" name="memory" type="hidden" value="<%= params[:memory] %>">
 
           <fieldset>
           <input id="fullname" value="<%= URI::decode(params[:fullname]) if params[:fullname].present? %>" placeholder="Full Name" name="fullname" type="text" class="paymentconfirm_text inspectletIgnore">

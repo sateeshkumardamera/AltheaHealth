@@ -31,7 +31,8 @@ module CheckoutMixin
         country: params.has_key?(:country) ? params[:country] : '',
         additional_info: params.has_key?(:additional_info) ? params[:additional_info] : '',
         
-        address_one: params.has_key?(:donormemory) ? params[:donormemory] : ''
+        address_one: params.has_key?(:donormemory) ? params[:donormemory] : '',
+        address_two: params.has_key?(:memory) ? params[:memory] : ''
 
     }
 

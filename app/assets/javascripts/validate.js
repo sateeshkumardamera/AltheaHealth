@@ -50,6 +50,17 @@ function stayBack() {
   $('#exitModel').modal({ keyboard: false });  // initialized with no keyboard
   $('#exitModel').modal('hide');
 }
+
+function inMemoryRadioClick() {
+    var s = $('#donormemory').val();
+    $("#inmemoryValue").text("In memory of: "+s);
+    memoryLabel = "In memory of: ";
+}
+function inHonorRadioClick() {
+    var s = $('#donormemory').val();
+    $("#inmemoryValue").text("In honor of: "+s);
+    memoryLabel = "In honor of: ";
+}
 // ----------- other validation
 $( document ).ready(function() {
   // validate '/admin/site-settings'

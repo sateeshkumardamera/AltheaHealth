@@ -353,6 +353,12 @@
         display: inline!important;
         color: #000;
   }
+  .memory_label {
+        font-size: 16px;
+        font-weight: bold;
+        display: inline!important;
+        color: #000;
+  }
   .payment_radio {
     margin-top: -3px!important;
     width: 7%;
@@ -361,6 +367,11 @@
   .payment_radio_other {
     margin-top: -3px!important;
     width: 7%;
+    height: 2em;
+  }
+  .memory_radio {
+    margin-top: -2px!important;
+    width: 5%;
     height: 2em;
   }
   .paymentconfirm_text{

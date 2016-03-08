@@ -40,11 +40,11 @@
 	<% end %>
 	
 	
-	
+	var memoryLabel = "In memory of: ";
   function edValueKeyPress()
     {
-        var s = $('#donormemory').val();
-	$("#inmemoryValue").text("In memory of: "+s);    
+        var s1 = $('#donormemory').val();
+	$("#inmemoryValue").text(memoryLabel+s1);    
     }
 </script>
     
@@ -103,6 +103,10 @@
               </div>
 
 		<div class="donor_payment_div">
+		  <input type="radio" name="memory" class="memory_radio" id="memory" onclick="inMemoryRadioClick()" value=0 checked %>
+		  <label class="memory_label">In memory of</label>
+		  <input type="radio" name="memory" class="memory_radio" id="memory" onclick="inHonorRadioClick()" value=1 %>
+		  <label class="memory_label">In honor of</label>
 		  <input id="donormemory" placeholder="Name of your loved one" name="donormemory" type="text" maxlength="50" onKeyPress="edValueKeyPress()" onKeyUp="edValueKeyPress()" class="paymentconfirm_text inspectletIgnore"><br>
 		  <label id="inmemoryValue">In memory of:</label>
                 </div>
