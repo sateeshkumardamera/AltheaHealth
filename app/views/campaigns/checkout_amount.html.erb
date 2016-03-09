@@ -98,15 +98,15 @@
               </div><br>
               
 	      <div class="donation_heading" style="height: auto !important;">
-                <div style="float: right"><i class="icon icon-question-sign show_tooltip" data-placement="top" data-title="This dedication will be displayed in our donor honor roll. The text that you enter will be preceded by &quot;In memory of&quot;"></i></div>
-		<label><strong> Optionally you can dedicate this donation in memory of a loved one</strong></label>
+                <div style="float: right"><i class="icon icon-question-sign show_tooltip" data-placement="top" data-title="This dedication will be displayed in our donor honor roll"></i></div>
+		<label><strong>Optionally you can dedicate this donation to a loved one</strong></label>
               </div>
 
 		<div class="donor_payment_div">
 		  <input type="radio" name="memory" class="memory_radio" id="memory" onclick="inMemoryRadioClick()" value=0 checked %>
-		  <label class="memory_label">In memory of</label>
+		  <label style="display: inline!important;"><strong>In memory of</strong></label>&nbsp;&nbsp;&nbsp;
 		  <input type="radio" name="memory" class="memory_radio" id="memory" onclick="inHonorRadioClick()" value=1 %>
-		  <label class="memory_label">In honor of</label>
+		  <label style="display: inline!important;"><strong>In honor of</strong></label>
 		  <input id="donormemory" placeholder="Name of your loved one" name="donormemory" type="text" maxlength="50" onKeyPress="edValueKeyPress()" onKeyUp="edValueKeyPress()" class="paymentconfirm_text inspectletIgnore"><br>
 		  <label id="inmemoryValue">In memory of:</label>
                 </div>
