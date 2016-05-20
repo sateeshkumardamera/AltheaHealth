@@ -13,12 +13,24 @@ class CampaignsController < ApplicationController
   def home
     render 'theme/views/campaign', layout: 'layouts/application'
   end
-
+  
   def checkout_amount
     @changePageTitle = true
-    if !(@campaign.facebook_description.nil? or @campaign.facebook_description == '')
-      @amountArray = @campaign.facebook_description.split(',')
+    
+    logger.info "ALTHEA AMOUNT COOKIE IS*************#{cookies[:amt_str]}"
+    @amountString = cookies[:amt_str]
+    #@amountString = '100,150,200,1000'
+    logger.info "ALTHEA AMOUNT COOKIE IS********#####*****#{@amountString}"
+    if @amountString.nil?
+      if !(@campaign.facebook_description.nil? or @campaign.facebook_description == '')
+        @amountArray = @campaign.facebook_description.split(',')
+      end
+    else
+          logger.info "ALTHEA AMOUNT COOKIE IS***#####*****#####*****#{@amountString}"
+          @amountArray = @amountString.split(',')
     end
+    
+    
     @reward = false
     if params.has_key?(:reward) && params[:reward].to_i != 0
       @reward = Reward.find_by_id(params[:reward])
@@ -28,6 +40,7 @@ class CampaignsController < ApplicationController
       end
     end
   end
+
 
   def checkout_payment
     @changePageTitle = true
