@@ -21,7 +21,7 @@ class CampaignsController < ApplicationController
     @amountString = cookies[:amt_str]
     #@amountString = '100,150,200,1000'
     logger.info "ALTHEA AMOUNT COOKIE IS********#####*****#{@amountString}"
-    if @amountString.nil?
+    if (@amountString.nil? or @amountString == '')
       if !(@campaign.facebook_description.nil? or @campaign.facebook_description == '')
         @amountArray = @campaign.facebook_description.split(',')
       end
