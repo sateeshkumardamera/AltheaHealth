@@ -29,12 +29,12 @@ class Admin::CampaignsController < ApplicationController
         user_id: @settings.ct_sandbox_admin_id,
         billing_statement_text: @settings.billing_statement_text
       }
-      Crowdtilt.sandbox
-      response = Crowdtilt.post('/campaigns', {campaign: campaign})
+      #Crowdtilt.sandbox
+      #response = Crowdtilt.post('/campaigns', {campaign: campaign})
     rescue => exception
       redirect_to admin_campaigns, :flash => { :error => "Could not copy campaign" }
     else
-      @campaign.update_api_data(response['campaign'])
+      #@campaign.update_api_data(response['campaign'])
       @campaign.save
     end
 
@@ -85,14 +85,14 @@ class Admin::CampaignsController < ApplicationController
         user_id: ct_user_id,
         billing_statement_text: @settings.billing_statement_text
       }
-      @campaign.production_flag ? Crowdtilt.production(@settings) : Crowdtilt.sandbox
-      response = Crowdtilt.post('/campaigns', {campaign: campaign})
+      #@campaign.production_flag ? Crowdtilt.production(@settings) : Crowdtilt.sandbox
+      #response = Crowdtilt.post('/campaigns', {campaign: campaign})
     rescue => exception
       flash.now[:error] = exception.to_s
       render action: "new"
       return
     else
-      @campaign.update_api_data(response['campaign'])
+      #@campaign.update_api_data(response['campaign'])
       @campaign.save
 
       # Now that we've created the campaign, create new FAQs if any were provided
@@ -224,7 +224,7 @@ class Admin::CampaignsController < ApplicationController
 
     # calculate the goal amount (in case of a tilt by orders campaign)
     @campaign.set_goal
-
+    logger.info "LOG STMT 1"
     # Update the corresponding campaign on the Crowdtilt API
     # If it fails, echo the error message sent by the API back to the user
     # If successful, save the campaign
@@ -235,20 +235,21 @@ class Admin::CampaignsController < ApplicationController
         expiration_date: @campaign.expiration_date,
         billing_statement_text: @settings.billing_statement_text
       }
+      logger.info "LOG STMT 2"
       # If the campaign has been promoted to production, create a new campaign on the Crowtilt API
-      if @campaign.production_flag && @campaign.production_flag_changed?
-        campaign[:user_id] = ct_user_id
-        Crowdtilt.production(@settings)
-        response = Crowdtilt.post('/campaigns', {campaign: campaign})
-      else
-        @campaign.production_flag ? Crowdtilt.production(@settings) : Crowdtilt.sandbox
-        response = Crowdtilt.put('/campaigns/' + @campaign.ct_campaign_id, {campaign: campaign})
-      end
+      #if @campaign.production_flag && @campaign.production_flag_changed?
+       # campaign[:user_id] = ct_user_id
+        #Crowdtilt.production(@settings)
+        #response = Crowdtilt.post('/campaigns', {campaign: campaign})
+      #else
+       # @campaign.production_flag ? Crowdtilt.production(@settings) : Crowdtilt.sandbox
+       # response = Crowdtilt.put('/campaigns/' + @campaign.ct_campaign_id, {campaign: campaign})
+      #end
     rescue => exception
       flash.now[:error] = exception.to_s
       render action: "edit" and return
     else
-      @campaign.update_api_data(response['campaign'])
+      #@campaign.update_api_data(response['campaign'])
       @campaign.save
       redirect_to campaign_home_url(@campaign), :flash => { :success => "Campaign updated!" } and return
     end
