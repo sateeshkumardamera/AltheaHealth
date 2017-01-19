@@ -94,29 +94,29 @@
       <div><label style="text-align: center; font-size: 16px; color: #6b6b6b">Help us spread the word</label></div>
       <div class="share_content">
             <div class="rs-iconbox-01"><a class="addthis_button_facebook" href="javascript:void(0);" onclick="javascript:void(0);"
-								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=FB"
-								addthis:title="<%=ENV[@campaign.facebook_title.downcase+"_title"]%>"
-								addthis:description="<%=ENV[''+@campaign.facebook_title.downcase+"_fb_desc"]%>">
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase.tr(' ', '-') %>/pub?utm_source=CT&utm_medium=FB"
+								addthis:title="<%=ENV[@campaign.facebook_title.downcase.tr(' ', '_')+"_title"]%>"
+								addthis:description="<%=ENV[''+@campaign.facebook_title.downcase.tr(' ', '_')+"_fb_desc"]%>">
             </a></div>
             <div class="rs-iconbox-01"><a class="addthis_button_twitter" href="javascript:void(0);"
 								onclick="javascript:void(0);"
-								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=TW"
-								addthis:title="<%=ENV[@campaign.facebook_title.downcase+"_twitter_title"]%>">
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase.tr(' ', '-') %>/pub?utm_source=CT&utm_medium=TW"
+								addthis:title="<%=ENV[@campaign.facebook_title.downcase.tr(' ', '_')+"_twitter_title"]%>">
 							</a></div>
             <div class="rs-iconbox-01"><a class="addthis_button_linkedin" href="javascript:void(0);"
 								onclick="javascript:void(0);"
-								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=LN"
-								addthis:title="<%=ENV[@campaign.facebook_title.downcase+"_title"]%>"
-								addthis:description="<%=ENV[@campaign.facebook_title.downcase+"_linkedin_desc"]%>">
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase.tr(' ', '-') %>/pub?utm_source=CT&utm_medium=LN"
+								addthis:title="<%=ENV[@campaign.facebook_title.downcase.tr(' ', '_')+"_title"]%>"
+								addthis:description="<%=ENV[@campaign.facebook_title.downcase.tr(' ', '_')+"_linkedin_desc"]%>">
 							</a></div>
             <div class="rs-iconbox-01"><a class="addthis_button_pinterest_pinit" 
-								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase %>/pub?utm_source=CT&utm_medium=PT"
-								pi:pinit:media="<%=ENV[@campaign.facebook_title.downcase+"_image"]%>"
+								addthis:url="https://<%= @campaign.contributor_reference %>/web/<%= @campaign.facebook_title.downcase.tr(' ', '-') %>/pub?utm_source=CT&utm_medium=PT"
+								pi:pinit:media="<%=ENV[@campaign.facebook_title.downcase.tr(' ', '_')+"_image"]%>"
 								pi:pinit:layout="horizontal"  
-								pi:pinit:description="<%=ENV[@campaign.facebook_title.downcase+"_pin_desc"]%>">
+								pi:pinit:description="<%=ENV[@campaign.facebook_title.downcase.tr(' ', '_')+"_pin_desc"]%>">
 							</a></div>
       </div>
-      <div style="font-size: 18px; padding-left: 20%; margin-left: auto; margin-right: auto; margin-top: 120px;"><a style="color: #ff7000 !important;" href="/web/<%= @campaign.facebook_title.downcase %>/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" >Back to Campaign Page</a></div>
+      <div style="font-size: 18px; padding-left: 20%; margin-left: auto; margin-right: auto; margin-top: 120px;"><a style="color: #ff7000 !important;" href="/web/<%= @campaign.facebook_title.downcase.tr(' ', '-') %>/pub?name=<%= @campaign.facebook_title unless @campaign.nil? %>&campaign=<%= @campaign.name.downcase.tr(' ', '_') unless @campaign.nil? %>&sr=<%= params[:sr]%>" >Back to Campaign Page</a></div>
     </div>
     
     

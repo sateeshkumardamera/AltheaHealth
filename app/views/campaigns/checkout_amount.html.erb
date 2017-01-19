@@ -67,7 +67,7 @@
                 <h4 class="amount_header"><strong> Select Donation Level:</strong></h4><br>
               </div>
               
-		<% if @amountArray.nil?  %>
+              <% if @amountArray.nil?  %>
                   <div class="payment_div">
                     <input type="radio" name="quantity" class="payment_radio" id="quantity" value=<%= short_price((@campaign.fixed_payment_amount )) %> %>
                     <label class="payment_label">Donate <%= short_price((@campaign.fixed_payment_amount ), '$', 0) %></label>
@@ -90,7 +90,6 @@
                   <% end %>
 
               <% end %> 
-
               <div class="payment_div">
                 <input type="radio" name="quantity" class="payment_radio_other" id="quantity" value=1 %>
                 <label class="payment_label">Other $</label>
@@ -258,7 +257,7 @@
     
 
 	<div class="modal-footer">
-	<button type="button" class="btn popup_submit" id="close-popup" onclick="stayBack()">I changed my mind I will make a donation</button>
+	<button type="button" class="btn popup_submit" id="close-popup" onclick="stayBack()">I changed my mind, I will make a donation</button>
 	<button type="submit" class="btn popup_submit show_loader" data-loader="feedback_form" id="submit-feed-back">Submit Feedback</button>
 	<!-- <%= submit_tag "Submit Feedback", data: { disable_with: "Please wait.." } %>-->
 	<!-- <%= button_to_function 'I changed my mind I will make a donation', 'stayBack()' %>-->
